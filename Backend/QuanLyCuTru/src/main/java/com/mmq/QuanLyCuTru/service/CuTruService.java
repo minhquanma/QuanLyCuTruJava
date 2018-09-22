@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CuTruService {
@@ -20,6 +21,11 @@ public class CuTruService {
     // Lấy cư trú theo id
     public CuTru getById(int id) {
         return cuTruDAO.findById(id);
+    }
+
+    // Lấy cư trú theo tên công dân
+    public Optional<CuTru> getByName(String hoTen) {
+        return cuTruDAO.findByName(hoTen);
     }
 }
 

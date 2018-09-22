@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/quanlycutru")
@@ -25,8 +26,8 @@ public class QuanLyCuTruController {
     }
 
     // Lấy cư trú theo id
-    @GetMapping("/{id}")
-    public ResponseEntity<CuTru> getById(@PathVariable int id) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<CuTru> getCuTruById(@PathVariable int id) {
         // Lấy ra một object CuTru trong db
         CuTru cuTru = cuTruService.getById(id);
 
@@ -38,5 +39,11 @@ public class QuanLyCuTruController {
 
         // Trường hợp object CuTru có dữ liệu
         return ResponseEntity.ok(cuTruService.getById(id));
+    }
+
+    // Tìm kiếm cư trú theo tên công dân
+    @RequestMapping(value = "", params = "hoten", method = RequestMethod.GET)
+    public ResponseEntity<?> getByName(@RequestParam("hoten") String hoTen) {
+        return ResponseEntity.ok(cuTruService.getByName(hoTen));
     }
 }
