@@ -12,8 +12,14 @@ public class CuTruService {
     @Autowired
     CuTruDAO cuTruDAO;
 
+    // Lấy danh sách cư trú
     public List<CuTru> getAll() {
         return cuTruDAO.findAll();
+    }
+
+    // Lấy cư trú theo id
+    public CuTru getById(int id) {
+        return cuTruDAO.findById(id);
     }
 }
 

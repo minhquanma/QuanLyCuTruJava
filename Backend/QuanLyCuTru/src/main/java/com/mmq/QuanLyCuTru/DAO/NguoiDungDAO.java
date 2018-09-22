@@ -1,10 +1,9 @@
 package com.mmq.QuanLyCuTru.DAO;
 
-import com.mmq.QuanLyCuTru.model.CuTru;
+import com.mmq.QuanLyCuTru.model.NguoiDung;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CuTruDAO extends JpaRepository<CuTru, Integer> {
-    public CuTru findById(int id);
+public interface NguoiDungDAO extends JpaRepository<NguoiDung, Integer> {
 }

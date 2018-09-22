@@ -1,13 +1,17 @@
 package com.mmq.QuanLyCuTru.model;
 
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "CUTRUS")
 public class CuTru {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="CuTrus_Id", sequenceName="CUTRUS_ID_1SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CuTrus_Id")
     @Column(name = "Id")
     private int id;
 
@@ -49,6 +53,15 @@ public class CuTru {
 
     @Column(name = "CanBoId")
     private Integer canBoId;
+
+    @ManyToMany(cascade = {
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "DANGKYCUTRU",
+            joinColumns = @JoinColumn(name = "CuTruId"),
+            inverseJoinColumns = @JoinColumn(name = "CongDanId")
+    )
+    private List<NguoiDung> congDans = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -162,9 +175,15 @@ public class CuTru {
         this.canBoId = canBoId;
     }
 
-    public CuTru() {
+    public List<NguoiDung> getCongDans() {
+        return congDans;
     }
 
+    public void setCongDans(List<NguoiDung> congDans) {
+        this.congDans = congDans;
+    }
+
+    public CuTru() { }
     public CuTru(int id, Date ngayTao, Date ngayDangKy, Date ngayHetHan, String email, String dienThoai, String soNha, String duong, String phuong, String quan, String thanhPho, boolean daDuyet, int loaiCuTruId, int canBoId) {
         this.id = id;
         this.ngayTao = ngayTao;
