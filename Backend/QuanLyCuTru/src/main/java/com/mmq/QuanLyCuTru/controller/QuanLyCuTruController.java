@@ -28,22 +28,37 @@ public class QuanLyCuTruController {
     // Lấy cư trú theo id
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<CuTru> getCuTruById(@PathVariable int id) {
-        // Lấy ra một object CuTru trong db
+        // Lấy ra 1 object CuTru dựa trên param id
         CuTru cuTru = cuTruService.getById(id);
 
         // Trường hợp object CuTru rỗng (= null)
         if (cuTru == null) {
             // Trả về mã lỗi 404 Not Found
-            return new ResponseEntity<CuTru>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         // Trường hợp object CuTru có dữ liệu
-        return ResponseEntity.ok(cuTruService.getById(id));
+        // Trả về object CuTru
+        return ResponseEntity.ok(cuTru);
+
+        // Kết thúc xử lý
     }
 
     // Tìm kiếm cư trú theo tên công dân
     @RequestMapping(value = "", params = "hoten", method = RequestMethod.GET)
-    public ResponseEntity<?> getByName(@RequestParam("hoten") String hoTen) {
-        return ResponseEntity.ok(cuTruService.getByName(hoTen));
+    public ResponseEntity<?> getCuTrusByName(@RequestParam("hoten") String hoTen) {
+        // Lấy ra object CuTru dựa trên param hoTen
+        Optional<List<CuTru>> cuTrus = cuTruService.getByName(hoTen);
+
+        if (cuTrus.isPresent() == false) {
+            // Trả về mã lỗi 404 Not Found
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        // Trường hợp object CuTru có dữ liệu
+        // Trả về object CuTru
+        return ResponseEntity.ok(cuTrus.get());
+
+        // Kết thúc xử lý
     }
 }

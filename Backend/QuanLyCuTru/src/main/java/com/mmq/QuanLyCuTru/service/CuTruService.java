@@ -24,7 +24,7 @@ public class CuTruService {
     }
 
     // Lấy cư trú theo tên công dân
-    public Optional<CuTru> getByName(String hoTen) {
+    public Optional<List<CuTru>> getByName(String hoTen) {
         return cuTruDAO.findByName(hoTen);
     }
 }
