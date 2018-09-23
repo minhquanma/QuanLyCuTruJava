@@ -16,12 +16,15 @@ public class CuTru {
     private int id;
 
     @Column(name = "NgayTao")
+    @Temporal(TemporalType.DATE)
     private Date ngayTao;
 
     @Column(name = "NgayDangKy")
+    @Temporal(TemporalType.DATE)
     private Date ngayDangKy;
 
     @Column(name = "NgayHetHan")
+    @Temporal(TemporalType.DATE)
     private Date ngayHetHan;
 
     @Column(name = "Email")

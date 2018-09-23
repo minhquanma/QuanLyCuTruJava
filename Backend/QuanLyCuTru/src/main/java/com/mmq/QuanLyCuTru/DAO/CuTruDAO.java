@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,11 +14,12 @@ import java.util.Optional;
 public interface CuTruDAO extends JpaRepository<CuTru, Integer> {
     CuTru findById(int id);
 
-    @Query(value =
-            "SELECT C.* FROM DANGKYCUTRU DK " +
-            "INNER JOIN CUTRUS C ON DK.CuTruId = C.Id " +
-            "INNER JOIN NGUOIDUNGS N ON DK.CongDanId = N.Id " +
-            "WHERE lower(HoTen) LIKE %:hoTen% ", nativeQuery = true
-    )
+    @Query(value = "SELECT C FROM CuTru C JOIN C.congDans N WHERE lower(N.hoTen) LIKE %:hoTen%")
     Optional<List<CuTru>> findByName(@Param("hoTen") String hoTen);
+
+    @Query(value = "SELECT C FROM CuTru C WHERE C.ngayHetHan < :dateNow")
+    Optional<List<CuTru>> findExpiredCuTrus(@Param("dateNow") Date dateNow);
+
+    @Query(value = "SELECT C FROM CuTru C WHERE C.ngayHetHan >= :dateNow")
+    Optional<List<CuTru>> findUnexpiredCuTrus(@Param("dateNow") Date dateNow);
 }
