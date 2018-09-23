@@ -26,11 +26,6 @@ public class CuTruService {
         return cuTruDAO.findById(id);
     }
 
-    // Lấy cư trú theo tên công dân
-    public Optional<List<CuTru>> getCuTrusByName(String hoTen) {
-        return cuTruDAO.findByName(hoTen);
-    }
-
     // Tìm kiếm cư trú theo trạng thái hết hạn (đã hết hạn hay chưa)
     public Optional<List<CuTru>> getExpiredCuTrus() {
 
@@ -39,13 +34,42 @@ public class CuTruService {
 
         return cuTruDAO.findExpiredCuTrus(dateNow);
     }
-
+    // Lấy cư trú chưa hết hạn
     public Optional<List<CuTru>> getUnexpiredCuTrus() {
 
         // Lấy ngày hệ thống
         Date dateNow = new Date();
 
         return cuTruDAO.findUnexpiredCuTrus(dateNow);
+    }
+
+    // Lấy cư trú theo tên công dân
+    public Optional<List<CuTru>> getCuTrusByName(String hoTen) {
+        return cuTruDAO.findByName(hoTen);
+    }
+
+    // Lấy cư trú theo nơi sinh
+    public Optional<List<CuTru>> getCuTrusByBirthPlace(String noiSinh) {
+        return cuTruDAO.findByBirthPlace(noiSinh);
+    }
+
+    // Lấy cư trú theo quê quán
+    public Optional<List<CuTru>> getCuTrusByHometown(String queQuan) {
+        return cuTruDAO.findByHometown(queQuan);
+    }
+
+    // Lấy cư trú theo quốc tịch
+    public Optional<List<CuTru>> getCuTrusByNationality(String quocTich) {
+        return cuTruDAO.findByNationality(quocTich);
+    }
+
+    // Lấy cư trú theo địa chỉ cư trú
+    public Optional<List<CuTru>> getCuTrusByAddress(String diaChi) {
+        return cuTruDAO.findByAddress(diaChi);
+    }
+
+    public Optional<List<CuTru>> getCuTrusByPersonalAddress(String diaChiDan) {
+        return cuTruDAO.findByPersonalAddress(diaChiDan);
     }
 }
 

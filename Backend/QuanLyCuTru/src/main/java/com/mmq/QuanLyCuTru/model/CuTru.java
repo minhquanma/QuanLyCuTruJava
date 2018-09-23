@@ -16,15 +16,15 @@ public class CuTru {
     private int id;
 
     @Column(name = "NgayTao")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date ngayTao;
 
     @Column(name = "NgayDangKy")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date ngayDangKy;
 
     @Column(name = "NgayHetHan")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date ngayHetHan;
 
     @Column(name = "Email")
