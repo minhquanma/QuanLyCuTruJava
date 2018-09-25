@@ -1,9 +1,10 @@
+import { NguoiDung } from '../standards/nguoidung';
+
 export interface CuTru {
-  id: string;
+  id: number;
   ngayTao: Date;
   ngayDangKy: Date;
   ngayHetHan: Date;
-  email: string;
   soNha: string;
   duong: string;
   phuong: string;
@@ -12,4 +13,5 @@ export interface CuTru {
   daDuyet: boolean;
   loaiCuTruId: number;
   canBoId: number;
+  congDan: NguoiDung;
 }
