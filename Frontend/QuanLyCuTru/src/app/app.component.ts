@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { CutruService } from "../service/cutru.service";
-import { CuTru } from "../model/CuTru";
+import { Component } from '@angular/core';
+import { CuTru } from '../models/customizes/cutru';
+import { CutruService } from '../services/cutru.service';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   cuTrus: CuTru[];
