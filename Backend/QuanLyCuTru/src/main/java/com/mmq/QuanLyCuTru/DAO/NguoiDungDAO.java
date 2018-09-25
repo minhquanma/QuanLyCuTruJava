@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NguoiDungDAO extends JpaRepository<NguoiDung, Integer> {
+
+    // Tìm kiếm theo mã công dân
+    NguoiDung findById(int id);
 }

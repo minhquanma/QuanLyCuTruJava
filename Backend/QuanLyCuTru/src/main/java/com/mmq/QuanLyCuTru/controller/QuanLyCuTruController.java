@@ -23,8 +23,9 @@ public class QuanLyCuTruController {
 
     // Lấy danh sách cư trú
     @GetMapping("")
-    public List<CuTru> getCuTrus() {
-        return cuTruService.getCuTrus();
+    public ResponseEntity<List<CuTru>> getCuTrus() {
+        List<CuTru> cuTrus = cuTruService.getCuTrus();
+        return ResponseEntity.ok(cuTrus);
     }
 
     // Lấy cư trú theo id
