@@ -1,9 +1,9 @@
 /* getCuTruById(id): Tim kiem cu tru theo ho ten cong dan */
 /* SQL :*/
-SELECT C.* FROM DANGKYCUTRU DK
+SELECT DISTINCT C.* FROM DANGKYCUTRU DK
 INNER JOIN CUTRUS C ON DK.CuTruId = C.Id 
 INNER JOIN NGUOIDUNGS N ON DK.CongDanId = N.Id 
-WHERE lower(HoTen) LIKE lower(N'%hoTen%');
+WHERE lower(QueQuan) LIKE lower(N'%hoTen%')
 
 /* JPQL :*/
 SELECT C FROM CuTru C JOIN C.congDans N WHERE lower(N.hoTen) LIKE %:hoTen%
