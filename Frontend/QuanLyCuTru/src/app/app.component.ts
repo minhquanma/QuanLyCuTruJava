@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CuTru } from '../models/customizes/cutru';
-import { CutruService } from '../services/cutru.service';
+import { CutruService } from './services/cutru.service';
+import { CuTru } from './models/customizes/cutru';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { CutruService } from '../services/cutru.service';
 })
 export class AppComponent {
   cuTrus: CuTru[];
-  constructor(private cuTruService: CutruService) {
+  constructor(protected cuTruService: CutruService) {
     cuTruService.getAll().subscribe((data: CuTru[]) => {
       this.cuTrus = data;
       console.log(data);

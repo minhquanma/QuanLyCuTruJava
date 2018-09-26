@@ -1,0 +1,7 @@
+{
+  "WEB_SERVICE": {
+    "CUTRU": "http://mmq.noip.me:7777/quanlycutru",
+    "DAN": "http://mmq.noip.me:7777/quanlydan",
+    "TIMEOUT": 30000
+  }
+}

@@ -5,11 +5,11 @@ export interface CuTru {
   ngayTao: Date;
   ngayDangKy: Date;
   ngayHetHan: Date;
-  soNha: string;
-  duong: string;
-  phuong: string;
-  quan: string;
-  thanhPho: string;
+  soNha: String;
+  duong: String;
+  phuong: String;
+  quan: String;
+  thanhPho: String;
   daDuyet: boolean;
   loaiCuTruId: number;
   canBoId: number;
