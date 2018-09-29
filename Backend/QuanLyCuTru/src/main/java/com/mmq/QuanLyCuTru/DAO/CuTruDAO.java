@@ -19,6 +19,8 @@ public interface CuTruDAO extends JpaRepository<CuTru, Integer> {
     // Tìm kiếm theo loại cư trú
 
     // Tìm kiếm theo trạng thái duyệt (đã duyệt hay chưa)
+    @Query(value = "SELECT C FROM CuTru C WHERE C.daDuyet = :duyet")
+    Optional<List<CuTru>> findByState(@Param("duyet") boolean duyet);
 
     // Tìm kiếm cư trú đã hết hạn
     @Query(value = "SELECT C FROM CuTru C WHERE C.ngayHetHan < :dateNow")
@@ -55,4 +57,13 @@ public interface CuTruDAO extends JpaRepository<CuTru, Integer> {
             "SELECT DISTINCT C FROM CuTru C JOIN C.congDans N WHERE " +
             "lower(concat(N.soNha, N.duong, N.phuong, N.quan, N.thanhPho)) LIKE %:diaChiDan%")
     Optional<List<CuTru>> findByPersonalAddress(@Param("diaChiDan") String diaChiDan);
+
+    // Số cư trú chờ duyệt (chưa duyệt)
+    int countByDaDuyet(boolean daDuyet);
+
+    // Số lượt đăng ký hôm nay
+    int countByNgayDangKy(Date ngayDangKy);
+
+    // Số cư trú đã hết hạn
+    int countByNgayHetHanLessThan(Date ngayHetHan);
 }

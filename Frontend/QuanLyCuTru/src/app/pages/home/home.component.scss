@@ -1,0 +1,39 @@
+.side-navbar {
+  flex: 1;
+}
+
+.side-jumbo {
+  flex: 0 0 75%;
+}
+
+/*.anonymous-view {
+    flex: 1;
+}*/
+
+body-content {
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.data-view {
+  flex: 1;
+}
+
+@media only screen and (max-width: 540px) {
+  .side-jumbo h1 {
+    font-size: 29px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .side-jumbo a {
+    width: 143px;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .side-jumbo {
+    flex: 0 0 65%;
+  }
+}
