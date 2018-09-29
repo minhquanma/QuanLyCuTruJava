@@ -1,29 +1,35 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark px-2 py-3">
-  <a class="navbar-brand">RM</a>
-  <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="navbar-collapse collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link">Trang chủ</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Cư trú</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item">Đăng Ký Cư Trú</a>
-          <a class="dropdown-item">Danh Sách Cư Trú</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Công dân</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item">Danh Sách Dân</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Liên hệ</a>
-      </li>
-    </ul>
+<div class="header" *ngIf="isDisplayHeader">
+  <div class="header-content">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark px-2 py-3">
+      <a class="navbar-brand text-white">RM</a>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/home">Trang chủ</a>
+          </li>
+          <li class="nav-item dropdown" appDropdown>
+            <a class="nav-link dropdown-toggle">Cư trú</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">Đăng Ký Cư Trú</a>
+              <a class="dropdown-item">Danh Sách Cư Trú</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown" appDropdown>
+            <a class="nav-link dropdown-toggle">Công dân</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">Danh Sách Dân</a>
+            </div>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/contact">Liên hệ</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <button class="btn btn-outline-primary">Đăng Nhập</button>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>
