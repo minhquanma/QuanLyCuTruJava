@@ -1,5 +1,6 @@
 package com.mmq.QuanLyCuTru.controller;
 
+import com.mmq.QuanLyCuTru.SO.TrangChu;
 import com.mmq.QuanLyCuTru.config.Constants;
 import com.mmq.QuanLyCuTru.model.CuTru;
 import com.mmq.QuanLyCuTru.service.CuTruService;
@@ -56,7 +57,7 @@ public class QuanLyCuTruController {
                 // Trả về danh sách cư trú hết hạn
                 return ResponseEntity.ok(cuTruService.getExpiredCuTrus());
             case Constants.CHUA_HET_HAN:
-                // Trường hợp param hetHan bằng 1
+                // Trường hợp param hetHan bằng 0
                 // Trả về danh sách cư trú chưa hết hạn
                 return ResponseEntity.ok(cuTruService.getUnexpiredCuTrus());
             default:
@@ -137,5 +138,15 @@ public class QuanLyCuTruController {
         return ResponseEntity.ok(cuTrus);
 
         // Kết thúc xử lý
+    }
+
+    // Lấy thông tin tóm tắt cho trang chủ
+    @RequestMapping(value = "/trangchu", method = RequestMethod.GET)
+    public ResponseEntity<TrangChu> getTrangChuInfo() {
+        // Lấy ra object TrangChu
+        TrangChu trangChu = cuTruService.getTrangChuInfo();
+
+        // Trả về object TrangChu
+        return ResponseEntity.ok(trangChu);
     }
 }

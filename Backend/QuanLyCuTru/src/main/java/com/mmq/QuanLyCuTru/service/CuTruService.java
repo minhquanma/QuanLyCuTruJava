@@ -1,6 +1,7 @@
 package com.mmq.QuanLyCuTru.service;
 
 import com.mmq.QuanLyCuTru.DAO.CuTruDAO;
+import com.mmq.QuanLyCuTru.SO.TrangChu;
 import com.mmq.QuanLyCuTru.model.CuTru;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,8 +69,34 @@ public class CuTruService {
         return cuTruDAO.findByAddress(diaChi);
     }
 
+    // Tìm kiếm cư trú theo địa chỉ công dân
     public Optional<List<CuTru>> getCuTrusByPersonalAddress(String diaChiDan) {
         return cuTruDAO.findByPersonalAddress(diaChiDan);
+    }
+
+    // Lấy thông tin tóm tắt cho trang chủ
+    public TrangChu getTrangChuInfo() {
+        // Tạo mới object TrangChu
+        TrangChu trangChu = new TrangChu();
+
+        // Lấy ngày hệ thống
+        Date today = new Date();
+
+        // Lấy dữ liệu từ DAO
+        int tongSo = (int)cuTruDAO.count();
+        int dangKyHomNay = cuTruDAO.countByNgayDangKy(today);
+        int choDuyet = cuTruDAO.countByDaDuyet(false);
+        int hetHan = cuTruDAO.countByNgayHetHanLessThan(today);
+        List<CuTru> cuTrus = cuTruDAO.findByState(false).get();
+
+        // Gán dữ liệu
+        trangChu.setTongSo(tongSo);
+        trangChu.setDangKyHomNay(dangKyHomNay);
+        trangChu.setChoDuyet(choDuyet);
+        trangChu.setHetHan(hetHan);
+        trangChu.setCuTrus(cuTrus);
+
+        return trangChu;
     }
 }
 
