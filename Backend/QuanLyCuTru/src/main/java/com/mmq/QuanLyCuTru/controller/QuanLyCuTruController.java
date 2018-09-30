@@ -48,6 +48,18 @@ public class QuanLyCuTruController {
         // Kết thúc xử lý
     }
 
+    // Tìm kiếm cư trú theo loại cư trú
+    @RequestMapping(value = "", params = "loai", method = RequestMethod.GET)
+    public ResponseEntity<?> getCuTrusByType(int loai) {
+        // Lấy ra object CuTru dựa trên param loai
+        Optional<List<CuTru>> cuTrus = cuTruService.getCuTrusByType(loai);
+
+        // Trả về object CuTru
+        return ResponseEntity.ok(cuTrus);
+
+        // Kết thúc xử lý
+    }
+
     // Tìm kiếm cư trú theo trạng thái hết hạn (đã hết hạn hay chưa)
     @RequestMapping(value = "", params = "hethan", method = RequestMethod.GET)
     public ResponseEntity<?> getExpiredCuTrus(@RequestParam("hethan") Integer hetHan) {

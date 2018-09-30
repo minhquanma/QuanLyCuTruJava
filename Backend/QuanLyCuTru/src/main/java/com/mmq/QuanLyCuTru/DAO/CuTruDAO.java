@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,8 @@ public interface CuTruDAO extends JpaRepository<CuTru, Integer> {
     CuTru findById(int id);
 
     // Tìm kiếm theo loại cư trú
+    @Query(value = "SELECT C FROM CuTru C WHERE C.loaiCuTruId = :loai")
+    Optional<List<CuTru>> findByType(@Param("loai") int loai);
 
     // Tìm kiếm theo trạng thái duyệt (đã duyệt hay chưa)
     @Query(value = "SELECT C FROM CuTru C WHERE C.daDuyet = :duyet")
