@@ -27,6 +27,11 @@ public class CuTruService {
         return cuTruDAO.findById(id);
     }
 
+    // Tìm kiếm cư trú theo loại cư trú
+    public Optional<List<CuTru>> getCuTrusByType(int loai) {
+        return cuTruDAO.findByType(loai);
+    }
+
     // Tìm kiếm cư trú theo trạng thái hết hạn (đã hết hạn hay chưa)
     public Optional<List<CuTru>> getExpiredCuTrus() {
 
