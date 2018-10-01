@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { DropdownDirective } from './components/header/dropdown.directive';
+import { CutruComponent } from './pages/cutru/cutru.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DropdownDirective } from './components/header/dropdown.directive';
     FooterComponent,
     HomeComponent,
     LandingComponent,
-    DropdownDirective
+    DropdownDirective,
+    CutruComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

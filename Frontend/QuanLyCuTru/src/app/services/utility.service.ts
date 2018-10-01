@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UtilitiesService {
+export class UtilityService {
   private _displayHeader: boolean;
   private _displayFooter: boolean;
 
-  public setDisplayHeader(display) {
-    this._displayHeader = display;
+  public setDisplayHeader(isShow: boolean) {
+    this._displayHeader = isShow;
   }
 
   public isDisplayHeader() {
     return this._displayHeader;
   }
 
-  public setDisplayFooter(display) {
-    this._displayFooter = display;
+  public setDisplayFooter(isShow: boolean) {
+    this._displayFooter = isShow;
   }
 
   public isDisplayFooter() {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { CutruService } from '../../services/cutru.service';
-import { UtilitiesService } from '../../services/utilities.service';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-landing',
@@ -11,7 +11,7 @@ import { UtilitiesService } from '../../services/utilities.service';
 export class LandingComponent extends AppComponent implements OnInit {
   constructor(
     protected cuTruService: CutruService,
-    protected utilitiesService: UtilitiesService
+    protected utilitiesService: UtilityService
   ) {
     super(cuTruService, utilitiesService);
     utilitiesService.setDisplayHeader(false);
