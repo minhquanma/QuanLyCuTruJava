@@ -9,6 +9,16 @@ import { AppComponent } from '../../app.component';
   styleUrls: ['./cutru.component.scss']
 })
 export class CutruComponent extends AppComponent implements OnInit {
+  public searchOpions = [
+    { name: 'Họ tên', value: 'hoTen' },
+    { name: 'Địa chỉ', value: 'diaChi' }
+  ];
+
+  public statusFilterOptions = [
+    { name: 'Đã duyệt', value: true },
+    { name: 'Chưa duyệt', value: false }
+  ];
+
   constructor(
     protected cuTruService: CutruService,
     protected utilitiesService: UtilityService
