@@ -11,8 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(Constants.QUANLYCUTRU_URL)
@@ -160,5 +162,98 @@ public class QuanLyCuTruController {
 
         // Trả về object TrangChu
         return ResponseEntity.ok(trangChu);
+    }
+
+    // Tìm kiếm cư trú theo bộ lọc (filter)
+    @RequestMapping(value = "",
+                    params = { "loaitimkiem", "loaicutru", "loaitrangthai", "loaihan", "timkiem"},
+                    method = RequestMethod.GET)
+    public ResponseEntity<?> searchCuTrus(@RequestParam("loaitimkiem")   int loaiTimKiem,
+                                          @RequestParam("loaicutru")     int loaiCuTru,
+                                          @RequestParam("loaitrangthai") int loaiTrangThai,
+                                          @RequestParam("loaihan")       int loaiHan,
+                                          @RequestParam("timkiem")       String timKiem) {
+        List<CuTru> cuTrus = null;
+
+        if (timKiem.isEmpty()) {
+            loaiTimKiem = 0;
+        }
+
+        // Loại tìm kiếm
+        switch (Constants.LoaiTimKiem.values()[loaiTimKiem]) {
+            case MacDinh:
+                cuTrus = cuTruService.getCuTrus();
+                break;
+            case Ten:
+                cuTrus = cuTruService.getCuTrusByName(timKiem).get();
+                break;
+            case NoiSinh:
+                cuTrus = cuTruService.getCuTrusByBirthPlace(timKiem).get();
+                break;
+            case QueQuan:
+                cuTrus = cuTruService.getCuTrusByHometown(timKiem).get();
+                break;
+            case QuocTich:
+                cuTrus = cuTruService.getCuTrusByNationality(timKiem).get();
+                break;
+            case DiaChiCuTru:
+                cuTrus = cuTruService.getCuTrusByAddress(timKiem).get();
+                break;
+            case DiaChiDan:
+                cuTrus = cuTruService.getCuTrusByPersonalAddress(timKiem).get();
+                break;
+        }
+
+        // Loại cư trú
+        switch(Constants.LoaiCuTru.values()[loaiCuTru]) {
+            case MacDinh:
+                // Bỏ qua
+                break;
+            case TamTru:
+                cuTrus = cuTrus.stream()
+                            .filter(cuTru -> cuTru.getLoaiCuTruId() == Constants.TAM_TRU)
+                            .collect(Collectors.toList());
+                break;
+            case TamVang:
+                cuTrus = cuTrus.stream()
+                            .filter(cuTru -> cuTru.getLoaiCuTruId() == Constants.TAM_VANG)
+                            .collect(Collectors.toList());
+                break;
+        }
+
+        // Loại trạng thái
+        switch (Constants.LoaiTrangThai.values()[loaiTrangThai]) {
+            case MacDinh:
+                // Bỏ qua
+                break;
+            case DaDuyet:
+                cuTrus = cuTrus.stream()
+                            .filter(cuTru -> cuTru.isDaDuyet() == true)
+                            .collect(Collectors.toList());
+                break;
+            case ChuaDuyet:
+                cuTrus = cuTrus.stream()
+                            .filter(cuTru -> cuTru.isDaDuyet() == false)
+                            .collect(Collectors.toList());
+                break;
+        }
+
+        // Loai thời hạn
+        switch (Constants.LoaiHan.values()[loaiHan]) {
+            case MacDinh:
+                // Bỏ qua
+                break;
+            case ConHan:
+                cuTrus = cuTrus.stream()
+                            .filter(cuTru -> cuTru.getNgayHetHan().compareTo(new Date()) > 0)
+                            .collect(Collectors.toList());
+                break;
+            case HetHan:
+                cuTrus = cuTrus.stream()
+                        .filter(cuTru -> cuTru.getNgayHetHan().compareTo(new Date()) < 0)
+                        .collect(Collectors.toList());
+                break;
+        }
+        return ResponseEntity.ok(cuTrus);
     }
 }
