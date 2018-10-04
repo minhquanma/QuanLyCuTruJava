@@ -3,17 +3,12 @@
     <h2 class="font-weight-bold mb-4">Quản lý cư trú</h2>
     <div class="form-inline mb-3">
       <label class="mr-2 mb-2 mb-sm-0">Tìm kiếm</label>
-      <div class="dropdown mr-2" appDropdown>
-        <button class="btn dropdown-toggle">
-          Tất cả
-        </button>
-        <div class="dropdown-menu">
-          <button class="dropdown-item">Action</button>
-          <button class="dropdown-item">Another action</button>
-          <button class="dropdown-item">Something else here</button>
-        </div>
-      </div>
-      <input class="form-control mr-2" type="text" placeholder="Nhập dữ liệu muốn tìm kiếm">
+      <select name="searchOptions" class="form-control mr-2">
+        <option [value]="option.value" *ngFor="let option of searchOpions">
+          {{ option.name }}
+        </option>
+      </select>
+      <input class="search form-control mr-2" type="text" placeholder="Nhập dữ liệu muốn tìm kiếm ...">
       <button class="btn btn-outline-primary mb-2 mb-sm-0">Tìm kiếm</button>
     </div>
     <div class="form-inline mb-4">
@@ -45,16 +40,11 @@
       </div>
       <div class="filter-group d-block d-sm-flex mb-2 mr-2">
         <label class="mr-2 mb-2 mb-sm-0">Trạng thái</label>
-        <div class="dropdown" appDropdown>
-          <button class="btn dropdown-toggle">
-            Tất cả
-          </button>
-          <div class="dropdown-menu">
-            <button class="dropdown-item">Action</button>
-            <button class="dropdown-item">Another action</button>
-            <button class="dropdown-item">Something else here</button>
-          </div>
-        </div>
+        <select name="statusFilterOptions" class="form-control mr-2">
+          <option [value]="option.value" *ngFor="let option of statusFilterOptions">
+            {{ option.name }}
+          </option>
+        </select>
       </div>
       <div class="ml-auto mb-2 taomoi-btn">
       </div>
