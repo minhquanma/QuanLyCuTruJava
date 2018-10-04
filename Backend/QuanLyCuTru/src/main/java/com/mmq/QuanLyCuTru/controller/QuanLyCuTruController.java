@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -173,39 +174,63 @@ public class QuanLyCuTruController {
                                           @RequestParam("loaitrangthai") int loaiTrangThai,
                                           @RequestParam("loaihan")       int loaiHan,
                                           @RequestParam("timkiem")       String timKiem) {
-        List<CuTru> cuTrus = null;
+
+        // Khởi tạo danh sách CuTru rỗng
+        List<CuTru> cuTrus = new ArrayList<>();
+        Constants.LoaiTimKiem _loaiTimKiem;
+        Constants.LoaiCuTru _loaiCuTru;
+        Constants.LoaiTrangThai _loaiTrangThai;
+        Constants.LoaiHan _loaiHan;
 
         if (timKiem.isEmpty()) {
-            loaiTimKiem = 0;
+            _loaiTimKiem = Constants.LoaiTimKiem.MacDinh;
+        } else {
+            // Loại tìm kiếm
+            try {
+                _loaiTimKiem = Constants.LoaiTimKiem.values()[loaiTimKiem];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
         }
 
-        // Loại tìm kiếm
-        switch (Constants.LoaiTimKiem.values()[loaiTimKiem]) {
+        switch (_loaiTimKiem) {
             case MacDinh:
                 cuTrus = cuTruService.getCuTrus();
                 break;
             case Ten:
-                cuTrus = cuTruService.getCuTrusByName(timKiem).get();
+                cuTrus = cuTruService.getCuTrusByName(timKiem)
+                        .orElse(new ArrayList<>());
                 break;
             case NoiSinh:
-                cuTrus = cuTruService.getCuTrusByBirthPlace(timKiem).get();
+                cuTrus = cuTruService.getCuTrusByBirthPlace(timKiem)
+                        .orElse(new ArrayList<>());
                 break;
             case QueQuan:
-                cuTrus = cuTruService.getCuTrusByHometown(timKiem).get();
+                cuTrus = cuTruService.getCuTrusByHometown(timKiem)
+                        .orElse(new ArrayList<>());
                 break;
             case QuocTich:
-                cuTrus = cuTruService.getCuTrusByNationality(timKiem).get();
+                cuTrus = cuTruService.getCuTrusByNationality(timKiem)
+                        .orElse(new ArrayList<>());
                 break;
             case DiaChiCuTru:
-                cuTrus = cuTruService.getCuTrusByAddress(timKiem).get();
+                cuTrus = cuTruService.getCuTrusByAddress(timKiem)
+                        .orElse(new ArrayList<>());
                 break;
             case DiaChiDan:
-                cuTrus = cuTruService.getCuTrusByPersonalAddress(timKiem).get();
+                cuTrus = cuTruService.getCuTrusByPersonalAddress(timKiem)
+                        .orElse(new ArrayList<>());
                 break;
         }
 
         // Loại cư trú
-        switch(Constants.LoaiCuTru.values()[loaiCuTru]) {
+        try {
+            _loaiCuTru = Constants.LoaiCuTru.values()[loaiCuTru];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        switch(_loaiCuTru) {
             case MacDinh:
                 // Bỏ qua
                 break;
@@ -222,7 +247,14 @@ public class QuanLyCuTruController {
         }
 
         // Loại trạng thái
-        switch (Constants.LoaiTrangThai.values()[loaiTrangThai]) {
+        try {
+            _loaiTrangThai = Constants.LoaiTrangThai.values()[loaiTrangThai];
+        } catch (ArrayIndexOutOfBoundsException e)
+        {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        switch (_loaiTrangThai) {
             case MacDinh:
                 // Bỏ qua
                 break;
@@ -239,7 +271,13 @@ public class QuanLyCuTruController {
         }
 
         // Loai thời hạn
-        switch (Constants.LoaiHan.values()[loaiHan]) {
+        try {
+            _loaiHan = Constants.LoaiHan.values()[loaiHan];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        switch (_loaiHan) {
             case MacDinh:
                 // Bỏ qua
                 break;

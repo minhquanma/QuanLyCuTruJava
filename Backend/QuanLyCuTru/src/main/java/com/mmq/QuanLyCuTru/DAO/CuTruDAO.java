@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CuTruDAO extends JpaRepository<CuTru, Integer> {
+public interface CuTruDAO extends JpaRepository<CuTru, Integer>, CuTruDAOCustom {
 
     // Tìm kiếm theo mã cư trú
     CuTru findById(int id);

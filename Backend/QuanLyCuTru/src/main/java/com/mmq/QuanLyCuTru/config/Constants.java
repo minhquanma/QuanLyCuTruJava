@@ -16,7 +16,7 @@ public class Constants {
         QueQuan,
         QuocTich,
         DiaChiCuTru,
-        DiaChiDan;
+        DiaChiDan
     }
 
     public enum LoaiCuTru {
