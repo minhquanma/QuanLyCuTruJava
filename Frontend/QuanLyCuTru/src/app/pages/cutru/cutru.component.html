@@ -4,8 +4,8 @@
     <div class="form-inline mb-3">
       <label class="mr-2 mb-2 mb-sm-0">Tìm kiếm</label>
       <select name="searchOptions" class="form-control mr-2">
-        <option [value]="option.value" *ngFor="let option of searchOpions">
-          {{ option.name }}
+        <option [value]="timKiem.value" *ngFor="let timKiem of timKiems">
+          {{ timKiem.name }}
         </option>
       </select>
       <input class="search form-control mr-2" type="text" placeholder="Nhập dữ liệu muốn tìm kiếm ...">
@@ -14,35 +14,25 @@
     <div class="form-inline mb-4">
       <div class="filter-group d-block d-sm-flex mb-2 mr-2">
         <label class="mr-2 mb-2 mb-sm-0">Loại cư trú</label>
-        <div class="dropdown" appDropdown>
-          <button class="btn dropdown-toggle">
-            Tất cả
-          </button>
-          <div class="dropdown-menu">
-            <button class="dropdown-item">Action</button>
-            <button class="dropdown-item">Another action</button>
-            <button class="dropdown-item">Something else here</button>
-          </div>
-        </div>
+        <select name="searchOptions" class="form-control mr-2">
+          <option [value]="loaiCuTru.value" *ngFor="let loaiCuTru of loaiCuTrus">
+            {{ loaiCuTru.name }}
+          </option>
+        </select>
       </div>
       <div class="filter-group d-block d-sm-flex mb-2 mr-2">
         <label class="mr-2 mb-2 mb-sm-0">Thời hạn</label>
-        <div class="dropdown" appDropdown>
-          <button class="btn dropdown-toggle">
-            Tất cả
-          </button>
-          <div class="dropdown-menu">
-            <button class="dropdown-item">Action</button>
-            <button class="dropdown-item">Another action</button>
-            <button class="dropdown-item">Something else here</button>
-          </div>
-        </div>
+        <select name="statusFilterOptions" class="form-control mr-2">
+          <option [value]="thoiHan.value" *ngFor="let thoiHan of thoiHans">
+            {{ thoiHan.name }}
+          </option>
+        </select>
       </div>
       <div class="filter-group d-block d-sm-flex mb-2 mr-2">
         <label class="mr-2 mb-2 mb-sm-0">Trạng thái</label>
         <select name="statusFilterOptions" class="form-control mr-2">
-          <option [value]="option.value" *ngFor="let option of statusFilterOptions">
-            {{ option.name }}
+          <option [value]="trangThai.value" *ngFor="let trangThai of trangThais">
+            {{ trangThai.name }}
           </option>
         </select>
       </div>
@@ -57,6 +47,9 @@
             Id
           </th>
           <th>
+            Loại Cư Trú
+          </th>
+          <th>
             Ngày Đăng Ký
           </th>
           <th>
@@ -69,29 +62,28 @@
             Đã Duyệt
           </th>
           <th>
-            Thời Hạn
+            Thao tác
           </th>
-          <th>Thao tác</th>
         </thead>
 
-        <tr class="clickable-row">
+        <tr class="clickable-row" *ngFor="let cuTru of cuTrus">
           <td>
-            Id
+            {{ cuTru.id }}
           </td>
           <td>
-            Date
+            {{ cuTru.loaiCuTruId }}
           </td>
           <td>
-            Date
+            {{ cuTru.ngayDangKy }}
           </td>
           <td>
-            Địa Chỉ
+            {{ cuTru.ngayHetHan }}
           </td>
           <td>
-            Duyệt ?
+            {{ cuTru.diaChi }}
           </td>
           <td>
-            Thời Hạn
+            {{ cuTru.daDuyet }}
           </td>
           <td>
             <a class="icon-link">

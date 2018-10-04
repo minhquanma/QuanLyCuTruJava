@@ -9,16 +9,12 @@ import { UtilityService } from './services/utility.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public cuTrus: CuTru[];
-
   constructor(
     protected cuTruService: CutruService,
     protected utilitiesService: UtilityService
   ) {}
 
-  ngOnInit() {
-    this.getAllCuTru();
-  }
+  ngOnInit() {}
 
   public isDisplayHeader(): boolean {
     return this.utilitiesService.isDisplayHeader();
@@ -26,12 +22,5 @@ export class AppComponent implements OnInit {
 
   public isDisplayFooter(): boolean {
     return this.utilitiesService.isDisplayFooter();
-  }
-
-  private getAllCuTru() {
-    this.cuTruService.getAllCuTru().subscribe((data: CuTru[]) => {
-      this.cuTrus = data;
-      console.log(data);
-    });
   }
 }

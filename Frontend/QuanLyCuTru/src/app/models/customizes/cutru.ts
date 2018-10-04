@@ -13,5 +13,5 @@ export interface CuTru {
   daDuyet: boolean;
   loaiCuTruId: number;
   canBoId: number;
-  congDan: NguoiDung;
+  congDan: NguoiDung[];
 }
