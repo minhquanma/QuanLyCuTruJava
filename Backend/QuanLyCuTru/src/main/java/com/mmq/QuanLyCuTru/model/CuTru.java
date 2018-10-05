@@ -117,12 +117,17 @@ public class CuTru {
     }
 
     public String getHoTen() {
-        if (congDans.size() > 1) {
-            return "Nhieu nguoi";
-        } else if (congDans.size() == 1) {
-            return congDans.get(0).getHoTen();
+        int numberOfCongDans = congDans.size();
+
+        switch (numberOfCongDans) {
+            case 0:
+                return "Không có";
+            case 1:
+                return congDans.get(0).getHoTen();
+            default:
+                return "Nhiều người";
         }
-        return "Khong co";
+
     }
 
     public String getDienThoai() {
