@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(Constants.QUANLYCUTRU_URL)
-@CrossOrigin(origins = Constants.CLIENT_URL)
+@CrossOrigin()
 public class QuanLyCuTruController {
 
     @Autowired
@@ -177,24 +177,29 @@ public class QuanLyCuTruController {
 
         // Khởi tạo danh sách CuTru rỗng
         List<CuTru> cuTrus = new ArrayList<>();
+
+        // Khởi tạo biến const
         Constants.LoaiTimKiem _loaiTimKiem;
         Constants.LoaiCuTru _loaiCuTru;
         Constants.LoaiTrangThai _loaiTrangThai;
         Constants.LoaiHan _loaiHan;
 
+        // Trường hợp nội dung tìm kiếm rỗng
         if (timKiem.isEmpty()) {
-            _loaiTimKiem = Constants.LoaiTimKiem.MacDinh;
-        } else {
-            // Loại tìm kiếm
-            try {
-                _loaiTimKiem = Constants.LoaiTimKiem.values()[loaiTimKiem];
-            } catch (ArrayIndexOutOfBoundsException e) {
+            // Set loại tìm kiếm là Mặc Định
+                _loaiTimKiem = Constants.LoaiTimKiem.MacDinh;
+            } else {
+                // Loại tìm kiếm
+                try {
+                    _loaiTimKiem = Constants.LoaiTimKiem.values()[loaiTimKiem];
+                } catch (ArrayIndexOutOfBoundsException e) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
         }
 
         switch (_loaiTimKiem) {
             case MacDinh:
+                // Bỏ qua => Lấy tất cả cư trú
                 cuTrus = cuTruService.getCuTrus();
                 break;
             case Ten:

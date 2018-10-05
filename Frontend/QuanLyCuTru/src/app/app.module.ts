@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { DropdownDirective } from './components/header/dropdown.directive';
 import { CutruComponent } from './pages/cutru/cutru.component';
+import { DangKyCuTruComponent } from './pages/dang-ky-cu-tru/dang-ky-cu-tru.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CutruComponent } from './pages/cutru/cutru.component';
     HomeComponent,
     LandingComponent,
     DropdownDirective,
-    CutruComponent
+    CutruComponent,
+    DangKyCuTruComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

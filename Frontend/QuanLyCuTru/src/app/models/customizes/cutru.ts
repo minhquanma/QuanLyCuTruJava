@@ -1,4 +1,4 @@
-import { NguoiDung } from '../standards/nguoidung';
+import { NguoiDung } from "../standards/nguoidung";
 
 export interface CuTru {
   id: number;
@@ -13,5 +13,5 @@ export interface CuTru {
   daDuyet: boolean;
   loaiCuTruId: number;
   canBoId: number;
-  congDan: NguoiDung[];
+  congDans: NguoiDung[];
 }

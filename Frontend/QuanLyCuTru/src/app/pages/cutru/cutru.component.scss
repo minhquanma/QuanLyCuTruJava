@@ -6,18 +6,6 @@
   width: 250px;
 }
 
-.form-control {
-  border: 1px solid black;
-  border-radius: 0;
-  min-width: 100px;
-  max-width: 100%;
-
-  &:focus {
-    box-shadow: none;
-    color: black;
-  }
-}
-
 .dropdown-menu {
   top: 96%;
 }
@@ -33,19 +21,6 @@
 .btn.focus,
 .btn:focus {
   box-shadow: none;
-}
-
-.btn.dropdown-toggle {
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 0;
-  text-align: left;
-  width: 100px;
-  color: #495057;
-}
-
-.show > .dropdown-menu {
-  display: block;
 }
 
 .clickable-row {

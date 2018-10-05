@@ -1,6 +1,8 @@
 package com.mmq.QuanLyCuTru.model;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +32,10 @@ public class CuTru {
     @Column(name = "Email")
     private String email;
 
+    @Transient
+    @JsonInclude
+    private String hoTen;
+
     @Column(name = "DienThoai")
     private String dienThoai;
 
@@ -47,6 +53,10 @@ public class CuTru {
 
     @Column(name = "ThanhPho")
     private String thanhPho;
+
+    @Transient
+    @JsonInclude
+    private String diaChi;
 
     @Column(name = "DaDuyet")
     private boolean daDuyet;
@@ -106,6 +116,15 @@ public class CuTru {
         this.email = email;
     }
 
+    public String getHoTen() {
+        if (congDans.size() > 1) {
+            return "Nhieu nguoi";
+        } else if (congDans.size() == 1) {
+            return congDans.get(0).getHoTen();
+        }
+        return "Khong co";
+    }
+
     public String getDienThoai() {
         return dienThoai;
     }
@@ -152,6 +171,10 @@ public class CuTru {
 
     public void setThanhPho(String thanhPho) {
         this.thanhPho = thanhPho;
+    }
+
+    public String getDiaChi() {
+        return String.format("%s %s, Phường %s, Quận %s, %s", soNha, duong, phuong, quan, thanhPho);
     }
 
     public boolean isDaDuyet() {

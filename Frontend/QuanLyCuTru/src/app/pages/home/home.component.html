@@ -55,25 +55,25 @@
             <div class="category col-12 col-sm-6 col-md-3 align-items-center justify-content-center">
               <h5 class="text-capitalize font-weight-bold mb-0" style="flex: 0 0 70%;">Tổng số</h5>
               <h3>
-                <span class="badge badge-dark">12</span>
+                <span class="badge badge-dark">{{ trangChu.tongSo }}</span>
               </h3>
             </div>
             <div class="category col-12 col-sm-6 col-md-3 align-items-center justify-content-center">
               <h5 class="text-capitalize font-weight-bold mb-0" style="flex: 0 0 70%;">Đăng ký hôm nay</h5>
               <h3>
-                <span class="badge badge-dark">2</span>
+                <span class="badge badge-dark">{{ trangChu.dangKyHomNay }}</span>
               </h3>
             </div>
             <div class="category col-12 col-sm-6 col-md-3 align-items-center justify-content-center">
               <h5 class="text-capitalize font-weight-bold mb-0" style="flex: 0 0 70%;">Chờ duyệt</h5>
               <h3>
-                <span class="badge badge-dark">4</span>
+                <span class="badge badge-dark">{{ trangChu.choDuyet }}</span>
               </h3>
             </div>
             <div class="category col-12 col-sm-6 col-md-3 align-items-center justify-content-center">
               <h5 class="text-capitalize font-weight-bold mb-0" style="flex: 0 0 70%;">Hết hạn</h5>
               <h3>
-                <span class="badge badge-dark">5</span>
+                <span class="badge badge-dark">{{ trangChu.hetHan }}</span>
               </h3>
             </div>
           </div>
@@ -97,9 +97,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="clickable-row">
-              <th scope="row">@item.Id</th>
-              <td>@item.Ten</td>
+            <tr class="clickable-row" *ngFor="let cuTru of trangChu.cuTrus">
+              <th scope="row">{{ cuTru.id }}</th>
+              <td>{{ cuTru.congDans[0] }}</td>
               <td>@item.DiaChi</td>
               <td>@item.DienThoai</td>
               <td>@item.NgayDangKy.ToShortDateString()</td>
