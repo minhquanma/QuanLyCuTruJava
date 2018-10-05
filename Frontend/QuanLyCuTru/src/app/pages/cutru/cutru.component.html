@@ -71,19 +71,19 @@
             {{ cuTru.id }}
           </td>
           <td>
-            {{ cuTru.loaiCuTruId }}
+            {{ cuTru.loaiCuTruId | loaiCuTru }}
           </td>
           <td>
-            {{ cuTru.ngayDangKy }}
+            {{ cuTru.ngayDangKy | date: 'dd/MM/yyyy' }}
           </td>
           <td>
-            {{ cuTru.ngayHetHan }}
+            {{ cuTru.ngayHetHan | date: 'dd/MM/yyyy' }}
           </td>
           <td>
             {{ cuTru.diaChi }}
           </td>
           <td>
-            {{ cuTru.daDuyet }}
+            {{ cuTru.daDuyet | trangThai }}
           </td>
           <td>
             <a class="icon-link">

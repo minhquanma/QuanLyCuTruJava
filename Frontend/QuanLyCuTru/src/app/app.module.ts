@@ -11,6 +11,8 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { DropdownDirective } from './components/header/dropdown.directive';
 import { CutruComponent } from './pages/cutru/cutru.component';
 import { DangKyCuTruComponent } from './pages/dang-ky-cu-tru/dang-ky-cu-tru.component';
+import { TrangThaiPipe } from './pipes/trang-thai.pipe';
+import { LoaiCuTruPipe } from './pipes/loai-cu-tru.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { DangKyCuTruComponent } from './pages/dang-ky-cu-tru/dang-ky-cu-tru.comp
     LandingComponent,
     DropdownDirective,
     CutruComponent,
-    DangKyCuTruComponent
+    DangKyCuTruComponent,
+    TrangThaiPipe,
+    LoaiCuTruPipe
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

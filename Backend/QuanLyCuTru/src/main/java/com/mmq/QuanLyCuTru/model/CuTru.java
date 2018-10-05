@@ -127,7 +127,6 @@ public class CuTru {
             default:
                 return "Nhiều người";
         }
-
     }
 
     public String getDienThoai() {
