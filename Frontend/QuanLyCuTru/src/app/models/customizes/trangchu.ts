@@ -1,4 +1,4 @@
-import { CuTru } from "./cutru";
+import { CuTru } from './cutru';
 
 export interface TrangChu {
   tongSo: number;

@@ -1,6 +1,6 @@
-<div class="cutru">
-  <div class="cutru-content container">
-    <h2 class="font-weight-bold mb-4">Quản lý cư trú</h2>
+<div class="congdan">
+  <div class="congdan-content container">
+    <h2 class="font-weight-bold mb-4">Quản lý công dân</h2>
     <div class="form-inline mb-3">
       <label class="mr-2 mb-2 mb-sm-0">Tìm kiếm</label>
       <select name="searchOptions" class="form-control mr-2">
@@ -13,26 +13,18 @@
     </div>
     <div class="form-inline mb-4">
       <div class="filter-group d-block d-sm-flex mb-2 mr-2">
-        <label class="mr-2 mb-2 mb-sm-0">Loại cư trú</label>
-        <select name="searchOptions" class="form-control mr-2">
-          <option [value]="loaiCuTru.value" *ngFor="let loaiCuTru of loaiCuTrus">
-            {{ loaiCuTru.name }}
+        <label class="mr-2 mb-2 mb-sm-0">Loại tài khoản</label>
+        <select name="statusFilterOptions" class="form-control mr-2">
+          <option [value]="loaiTaiKhoan.value" *ngFor="let loaiTaiKhoan of loaiTaiKhoans">
+            {{ loaiTaiKhoan.name }}
           </option>
         </select>
       </div>
       <div class="filter-group d-block d-sm-flex mb-2 mr-2">
-        <label class="mr-2 mb-2 mb-sm-0">Thời hạn</label>
+        <label class="mr-2 mb-2 mb-sm-0">Giới tính</label>
         <select name="statusFilterOptions" class="form-control mr-2">
-          <option [value]="thoiHan.value" *ngFor="let thoiHan of thoiHans">
-            {{ thoiHan.name }}
-          </option>
-        </select>
-      </div>
-      <div class="filter-group d-block d-sm-flex mb-2 mr-2">
-        <label class="mr-2 mb-2 mb-sm-0">Trạng thái</label>
-        <select name="statusFilterOptions" class="form-control mr-2">
-          <option [value]="trangThai.value" *ngFor="let trangThai of trangThais">
-            {{ trangThai.name }}
+          <option [value]="gioiTinh.value" *ngFor="let gioiTinh of gioiTinhs">
+            {{ gioiTinh.name }}
           </option>
         </select>
       </div>
@@ -48,43 +40,52 @@
             Mã số
           </th>
           <th>
-            Loại cư trú
+            Họ tên
           </th>
           <th>
-            Ngày đăng ký
+            Giới tính
           </th>
           <th>
-            Ngày hết hạn
+            Sinh nhật
           </th>
           <th>
-            Địa chỉ
+            Nơi sinh
           </th>
           <th>
-            Đã duyệt
+            Quê quán
+          </th>
+          <th>
+            Quốc tịch
           </th>
           <th>
             Thao tác
           </th>
+          <th>
+            Ảnh
+          </th>
         </thead>
 
-        <tr class="clickable-row" *ngFor="let cuTru of cuTrus">
+        <tr class="clickable-row" *ngFor="let congDan of congDans">
           <td>
-            {{ cuTru.id }}
+            {{ congDan.id }}
           </td>
           <td>
-            {{ cuTru.loaiCuTruId | loaiCuTru }}
+            {{ congDan.hoTen | loaiCuTru }}
           </td>
           <td>
-            {{ cuTru.ngayDangKy | date: 'dd/MM/yyyy' }}
+            {{ congDan.gioiTinh | gioiTinh }}
           </td>
           <td>
-            {{ cuTru.ngayHetHan | date: 'dd/MM/yyyy' }}
+            {{ congDan.sinhNhat | date: 'dd/MM/yyyy' }}
           </td>
           <td>
-            {{ cuTru.getDiaChi() }}
+            {{ congDan.noiSinh }}
           </td>
           <td>
-            {{ cuTru.daDuyet | trangThai }}
+            {{ congDan.queQuan }}
+          </td>
+          <td>
+            {{ congDan.quocTich }}
           </td>
           <td>
             <a class="icon-link">
@@ -96,6 +97,9 @@
             <a class="icon-link">
               <i class="fas fa-trash-alt"></i>
             </a>
+          </td>
+          <td>
+            <img class="avatar" [src]="congDan.avatar">
           </td>
         </tr>
       </table>

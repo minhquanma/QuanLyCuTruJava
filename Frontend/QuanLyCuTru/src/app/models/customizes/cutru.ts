@@ -1,4 +1,4 @@
-import { NguoiDung } from "../standards/nguoidung";
+import { NguoiDung } from '../standards/nguoidung';
 
 export interface CuTru {
   id: number;

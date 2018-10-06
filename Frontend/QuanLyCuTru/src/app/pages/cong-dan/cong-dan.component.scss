@@ -1,0 +1,28 @@
+.congdan-content {
+  margin-top: 35px;
+}
+
+.search {
+  width: 250px;
+}
+
+.dropdown-menu {
+  top: 96%;
+}
+
+.dropdown > .btn.dropdown-toggle {
+  cursor: auto;
+}
+
+.dropdown-menu > .dropdown-item {
+  cursor: pointer;
+}
+
+.btn.focus,
+.btn:focus {
+  box-shadow: none;
+}
+
+.clickable-row {
+  cursor: pointer;
+}

@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { AppComponent } from "../../app.component";
-import { CutruService } from "../../services/cutru.service";
-import { UtilityService } from "../../services/utility.service";
-import { TrangChu } from "../../models/customizes/trangchu";
-import { CuTru } from "../../models/customizes/cutru";
-import { NguoiDung } from "../../models/standards/nguoidung";
+import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../../app.component';
+import { CutruService } from '../../services/cutru.service';
+import { UtilityService } from '../../services/utility.service';
+import { TrangChu } from '../../models/customizes/trangchu';
+import { CuTru } from '../../models/customizes/cutru';
+import { NguoiDung } from '../../models/standards/nguoidung';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends AppComponent implements OnInit {
   trangChu: TrangChu;
@@ -24,10 +24,13 @@ export class HomeComponent extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.callAPI_GetTrangChuInfo();
+  }
+
+  private callAPI_GetTrangChuInfo() {
     // Lấy dữ liệu từ server gán vào TrangChu
     this.cuTruService.getTrangChuInfo(trangChu => {
       this.trangChu = trangChu;
-      console.table(trangChu.cuTrus);
     });
   }
 }

@@ -13,6 +13,8 @@ import { CutruComponent } from './pages/cutru/cutru.component';
 import { DangKyCuTruComponent } from './pages/dang-ky-cu-tru/dang-ky-cu-tru.component';
 import { TrangThaiPipe } from './pipes/trang-thai.pipe';
 import { LoaiCuTruPipe } from './pipes/loai-cu-tru.pipe';
+import { CongDanComponent } from './pages/cong-dan/cong-dan.component';
+import { GioiTinhPipe } from './pipes/gioi-tinh.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { LoaiCuTruPipe } from './pipes/loai-cu-tru.pipe';
     CutruComponent,
     DangKyCuTruComponent,
     TrangThaiPipe,
-    LoaiCuTruPipe
+    LoaiCuTruPipe,
+    CongDanComponent,
+    GioiTinhPipe
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
