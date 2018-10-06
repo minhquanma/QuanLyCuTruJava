@@ -1,3 +1,114 @@
-<p>
-  dang-ky-cu-tru works!
-</p>
+<div class="body-content container">
+  <h2>Đăng ký cư trú</h2>
+  <form action="post">
+    <div class="row">
+      <hr />
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="ngayTao" class="control-label">Ngày tạo</label>
+          <div class="">
+            <input class="form-control" type="datetime" id="ngayTao">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ngayDangKy" class="control-label">Ngày đăng ký</label>
+          <div class="">
+            <input class="form-control" type="text" id="ngayDangKy">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ngayHetHan" class="control-label">Ngày hết hạn</label>
+          <div class="">
+            <input class="form-control" type="text" id="ngayHetHan">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="control-label">Email</label>
+          <div class="">
+            <input class="form-control" type="text" id="email">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="dienThoai" class="control-label">Điện thoại</label>
+          <div class="">
+            <input class="form-control" type="text" id="dienThoai">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="soNha" class="control-label">Số nhà</label>
+          <div class="">
+            <input class="form-control" type="text" id="soNha">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="duong" class="control-label">Đường</label>
+          <div class="">
+            <input class="form-control" type="text" id="duong">
+          </div>
+        </div>
+
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="phuong" class="control-label">Phường</label>
+          <div class="">
+            <input class="form-control" type="text" id="phuong">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="quan" class="control-label">Quận</label>
+          <div class="">
+            <input class="form-control" type="text" id="quan">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="thanhPho" class="control-label">Thành phố</label>
+          <div class="">
+            <input class="form-control" type="text" id="thanhPho">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="loaiCuTru" class="control-label"></label>
+          <div class="">
+            <!-- > Dropdown list </-->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="">
+            <div id="CongDans" class="list-congdan list-group">
+              <li class="list-group-item active" style="background: #000;">Danh sách công dân</li>
+              <a href="#" class="list-group-item list-group-item-action">123</a>
+            </div>
+            <br />
+            <div class="input-group mb-3">
+              <input id="inputUserId" type="text" class="form-control" placeholder="Nhập mã công dân" aria-label="Recipient's username"
+                aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button id="buttonAdd" class="btn btn-outline-secondary" type="button">Thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-offset-2 ">
+
+            <input id="buttonSend" type="submit" value="Tạo mới" class="btn btn-success" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-md-block">
+      <a href="#" class="btn btn-primary">Trở về</a>
+    </div>
+  </form>
+</div>

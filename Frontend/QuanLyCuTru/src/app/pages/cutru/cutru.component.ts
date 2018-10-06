@@ -1,39 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { CutruService } from '../../services/cutru.service';
-import { UtilityService } from '../../services/utility.service';
-import { AppComponent } from '../../app.component';
-import { NguoiDung } from '../../models/standards/nguoidung';
-import { CuTru } from '../../models/customizes/cutru';
+import { Component, OnInit } from "@angular/core";
+import { CutruService } from "../../services/cutru.service";
+import { UtilityService } from "../../services/utility.service";
+import { AppComponent } from "../../app.component";
+import { NguoiDung } from "../../models/standards/nguoidung";
+import { CuTru } from "../../models/customizes/cutru";
 
 @Component({
-  selector: 'app-cutru',
-  templateUrl: './cutru.component.html',
-  styleUrls: ['./cutru.component.scss']
+  selector: "app-cutru",
+  templateUrl: "./cutru.component.html",
+  styleUrls: ["./cutru.component.scss"]
 })
 export class CutruComponent extends AppComponent implements OnInit {
   public cuTrus: CuTruVM[];
 
   public readonly timKiems = [
-    { name: 'Họ tên', value: 'hoTen' },
-    { name: 'Địa chỉ', value: 'diaChi' }
+    { name: "Họ tên", value: "hoTen" },
+    { name: "Địa chỉ", value: "diaChi" }
   ];
 
   public readonly loaiCuTrus = [
-    { name: 'Tất cả', value: null },
-    { name: 'Tạm trú', value: true },
-    { name: 'Tạm vắng', value: false }
+    { name: "Tất cả", value: null },
+    { name: "Tạm trú", value: true },
+    { name: "Tạm vắng", value: false }
   ];
 
   public readonly thoiHans = [
-    { name: 'Tất cả', value: null },
-    { name: 'Còn hạn', value: true },
-    { name: 'Hết hạn', value: false }
+    { name: "Tất cả", value: null },
+    { name: "Còn hạn", value: true },
+    { name: "Hết hạn", value: false }
   ];
 
   public readonly trangThais = [
-    { name: 'Tất cả', value: null },
-    { name: 'Đã duyệt', value: true },
-    { name: 'Chưa duyệt', value: false }
+    { name: "Tất cả", value: null },
+    { name: "Đã duyệt", value: true },
+    { name: "Chưa duyệt", value: false }
   ];
 
   constructor(
@@ -42,7 +42,7 @@ export class CutruComponent extends AppComponent implements OnInit {
   ) {
     super(cuTruService, utilitiesService);
     utilitiesService.setDisplayHeader(true);
-    utilitiesService.setDisplayFooter(false);
+    utilitiesService.setDisplayFooter(true);
   }
 
   ngOnInit() {
