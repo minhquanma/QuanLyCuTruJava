@@ -1,6 +1,6 @@
-<div class="footer" *ngIf="isDisplayerFooter">
+<div class="container" *ngIf=" isDisplayerFooter">
   <hr />
   <footer>
-    <p>&copy; {{ }} - Quản Lý Cư Trú</p>
+    <p>&copy; {{ dateTimeNow | date: 'yyyy' }} - Quản Lý Cư Trú</p>
   </footer>
 </div>

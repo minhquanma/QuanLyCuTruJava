@@ -9,7 +9,7 @@ export class FooterComponent implements OnInit {
   @Input()
   isDisplayerFooter;
 
-  dateTimeNow: Date;
+  dateTimeNow: number = Date.now();
 
   constructor() {}
 
