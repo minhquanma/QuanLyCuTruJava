@@ -3,15 +3,13 @@ import { AppComponent } from '../../app.component';
 import { CutruService } from '../../services/cutru.service';
 import { UtilityService } from '../../services/utility.service';
 import { TrangChu } from '../../models/customizes/trangchu';
-import { CuTru } from '../../models/customizes/cutru';
-import { NguoiDung } from '../../models/standards/nguoidung';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-trangchu',
+  templateUrl: './trangchu.component.html',
+  styleUrls: ['./trangchu.component.scss']
 })
-export class HomeComponent extends AppComponent implements OnInit {
+export class TrangchuComponent extends AppComponent implements OnInit {
   trangChu: TrangChu;
 
   constructor(

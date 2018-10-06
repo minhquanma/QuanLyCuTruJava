@@ -1,0 +1,59 @@
+<div class="chitietcongdan">
+  <div class="chitietcongdan-content container">
+    <h2 class="font-weight-bold">Thông tin chi tiết</h2>
+    <div>
+      <h4>Họ tên</h4>
+      <hr />
+      <div class="row align-items-center">
+        <div class="col-md-5 my-3">
+          <img alt="avatar" class="avatar" />
+        </div>
+        <div class="table-responsive-md">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th class="border-0">Mã số</th>
+                <td class="border-0">{{ congDan.id }}</td>
+              </tr>
+              <tr>
+                <th class="border-0">Email</th>
+                <td class="border-0">Email</td>
+              </tr>
+              <tr>
+                <th class="border-0">Giới tính</th>
+                <td class="border-0">{{ congDan.gioiTinh }}</td>
+              </tr>
+              <tr>
+                <th class="border-0">Sinh nhật</th>
+                <td class="border-0">{{ congDan.sinhNhat }}</td>
+              </tr>
+              <tr>
+                <th class="border-0">Địa chỉ</th>
+                <td class="border-0">Địa chỉ</td>
+              </tr>
+              <tr>
+                <th class="border-0">Nơi sinh</th>
+                <td class="border-0">{{ congDan.noiSinh }}</td>
+              </tr>
+              <tr>
+                <th class="border-0">Quê quán</th>
+                <td class="border-0">{{ congDan.queQuan }}</td>
+              </tr>
+              <tr>
+                <th class="border-0">Quốc tịch</th>
+                <td class="border-0">{{ congDan.quocTich }}</td>
+              </tr>
+              <tr>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      <button class="btn btn-primary mr-2">Sửa</button>
+      <button id="backLink" class="btn btn-info">Trở về</button>
+    </p>
+  </div>
+</div>

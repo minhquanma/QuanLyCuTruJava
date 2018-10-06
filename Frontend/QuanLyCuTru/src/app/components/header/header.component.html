@@ -1,11 +1,11 @@
 <div class="header" *ngIf="isDisplayHeader">
   <div class="header-content">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark px-2 py-3">
-      <a routerLink="/" class="navbar-brand text-white">RM</a>
+      <a class="navbar-brand text-white" routerLink="/">RM</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/home">Trang chủ</a>
+            <a class="nav-link" routerLink="/trangchu">Trang chủ</a>
           </li>
           <li class="nav-item dropdown" appDropdown routerLinkActive="active">
             <a class="nav-link dropdown-toggle">Cư trú</a>
@@ -21,7 +21,7 @@
             </div>
           </li>
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/contact">Liên hệ</a>
+            <a class="nav-link" routerLink="/chitietcongdan">Liên hệ</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">

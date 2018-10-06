@@ -3,6 +3,7 @@ import { CutruService } from '../../services/cutru.service';
 import { UtilityService } from '../../services/utility.service';
 import { AppComponent } from '../../app.component';
 import { NguoiDung } from '../../models/standards/nguoidung';
+import { CongdanService } from '../../services/congdan.service';
 
 @Component({
   selector: 'app-cong-dan',
@@ -31,12 +32,21 @@ export class CongDanComponent extends AppComponent implements OnInit {
 
   constructor(
     protected cuTruService: CutruService,
-    protected utilitiesService: UtilityService
+    protected utilitiesService: UtilityService,
+    private congDanService: CongdanService
   ) {
     super(cuTruService, utilitiesService);
     utilitiesService.setDisplayHeader(true);
     utilitiesService.setDisplayFooter(false);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.callAPI_GetNguoiDungs();
+  }
+
+  private callAPI_GetNguoiDungs() {
+    this.congDanService.getNguoiDungs(result => {
+      this.congDans = result;
+    });
+  }
 }
