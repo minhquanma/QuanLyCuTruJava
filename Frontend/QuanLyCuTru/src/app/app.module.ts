@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
@@ -36,7 +37,13 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     TrangchuComponent,
     DatepickerComponent
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, BsDatepickerModule.forRoot()],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    BsDatepickerModule.forRoot()
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
