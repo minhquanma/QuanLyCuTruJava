@@ -13,6 +13,8 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
     { name: "Tạm vắng", value: true },
     { name: "Tạm trú", value: false }
   ];
+  public bsValue: Date = new Date();
+
   constructor(
     protected cuTruService: CutruService,
     protected utilitiesService: UtilityService

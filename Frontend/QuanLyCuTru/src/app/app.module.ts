@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +17,7 @@ import { CongDanComponent } from './pages/cong-dan/cong-dan.component';
 import { GioiTinhPipe } from './pipes/gioi-tinh.pipe';
 import { ChiTietCongDanComponent } from './pages/chi-tiet-cong-dan/chi-tiet-cong-dan.component';
 import { TrangchuComponent } from './pages/trangchu/trangchu.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +33,10 @@ import { TrangchuComponent } from './pages/trangchu/trangchu.component';
     CongDanComponent,
     GioiTinhPipe,
     ChiTietCongDanComponent,
-    TrangchuComponent
+    TrangchuComponent,
+    DatepickerComponent
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, BsDatepickerModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent]
 })
