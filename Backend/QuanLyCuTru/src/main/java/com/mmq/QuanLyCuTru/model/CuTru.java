@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "CUTRUS")
 public class CuTru {
     @Id
-    @SequenceGenerator(name="CuTrus_Id", sequenceName="CUTRUS_ID_1SEQ")
+    @SequenceGenerator(name="CuTrus_Id", sequenceName="CuTrus_Id_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CuTrus_Id")
     @Column(name = "Id")
     private int id;
@@ -67,8 +67,10 @@ public class CuTru {
     @Column(name = "CanBoId")
     private Integer canBoId;
 
-    @ManyToMany(cascade = {
-            CascadeType.MERGE
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
     })
     @JoinTable(name = "DANGKYCUTRU",
             joinColumns = @JoinColumn(name = "CuTruId"),
@@ -76,6 +78,10 @@ public class CuTru {
     )
     private List<NguoiDung> congDans = new ArrayList<>();
 
+    public void addCongDan(NguoiDung congDan) {
+        if (!congDans.contains(congDan))
+            congDans.add(congDan);
+    }
     public int getId() {
         return id;
     }

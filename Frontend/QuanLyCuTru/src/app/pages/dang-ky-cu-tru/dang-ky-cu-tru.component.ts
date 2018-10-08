@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { CutruService } from '../../services/cutru.service';
 import { UtilityService } from '../../services/utility.service';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-dang-ky-cu-tru',
@@ -13,6 +12,12 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
   public ngayTao: Date = new Date();
   public ngayDangKy: Date = new Date();
   public ngayHetHan: Date = new Date();
+
+  public readonly loaiCuTrus = [
+    { name: 'Tạm vắng', value: true },
+    { name: 'Tạm trú', value: false }
+  ];
+  public bsValue: Date = new Date();
 
   constructor(
     protected cuTruService: CutruService,

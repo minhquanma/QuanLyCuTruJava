@@ -3,7 +3,9 @@ package com.mmq.QuanLyCuTru.controller;
 import com.mmq.QuanLyCuTru.SO.TrangChu;
 import com.mmq.QuanLyCuTru.config.Constants;
 import com.mmq.QuanLyCuTru.model.CuTru;
+import com.mmq.QuanLyCuTru.model.NguoiDung;
 import com.mmq.QuanLyCuTru.service.CuTruService;
+import com.mmq.QuanLyCuTru.service.NguoiDungService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class QuanLyCuTruController {
 
     @Autowired
     CuTruService cuTruService;
+
+    @Autowired
+    NguoiDungService nguoiDungService;
 
     // Lấy danh sách cư trú
     @GetMapping("")
@@ -65,7 +70,7 @@ public class QuanLyCuTruController {
 
     // Tìm kiếm cư trú theo trạng thái hết hạn (đã hết hạn hay chưa)
     @RequestMapping(value = "", params = "hethan", method = RequestMethod.GET)
-    public ResponseEntity<?> getExpiredCuTrus(@RequestParam("hethan") Integer hetHan) {
+    public ResponseEntity<?> getExpiredCuTrus(@RequestParam("hethan") Integer    hetHan) {
         switch (hetHan) {
             case Constants.HET_HAN:
                 // Trường hợp param hetHan bằng 1
@@ -154,6 +159,48 @@ public class QuanLyCuTruController {
 
         // Kết thúc xử lý
     }
+
+    // Tạo cư trú mới
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public ResponseEntity<?> createCuTru(@RequestBody CuTru cuTru) {
+        return ResponseEntity.ok(cuTruService.createCuTru(cuTru));
+    }
+    // Cập nhật cư trú theo id
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity<?> updateCuTru(@PathVariable int id, @RequestBody CuTru cuTru) {
+        // Trường hợp path id không bằng body id
+        if (cuTru.getId() != id)
+            // Trả về mã lỗi 400 - Bad Request
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        // Lấy ra CuTru với param id lấy từ request
+        CuTru cuTruDatabase = cuTruService.getCuTruById(id);
+
+        // Trường hợp CuTru lấy ra rỗng (null)
+        if (cuTruDatabase == null)
+            // Trả về mã lỗi 400 - Bad Request
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        // Trường hợp CuTru lấy ra có dữ liệu (khác null)
+        // Tiến hành cập nhật thông tin cư trú
+        if (cuTru.getCongDans() != null) {
+
+            List<NguoiDung> updatedCongDans = new ArrayList<>();
+
+            cuTru.getCongDans().forEach(congDan -> {
+                updatedCongDans.add(nguoiDungService.getNguoiDungById(congDan.getId()));
+            });
+
+            cuTru.setCongDans(updatedCongDans);
+        }
+        cuTruService.updateCuTru(cuTru);
+
+        // Kết thúc xử lý
+        return new ResponseEntity<>(cuTru, HttpStatus.OK);
+    }
+
+    // Duyệt cư trú theo id
 
     // Lấy thông tin tóm tắt cho trang chủ
     @RequestMapping(value = "/trangchu", method = RequestMethod.GET)
