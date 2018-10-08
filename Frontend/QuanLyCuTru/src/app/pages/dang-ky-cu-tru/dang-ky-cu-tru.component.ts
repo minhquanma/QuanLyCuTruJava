@@ -9,6 +9,10 @@ import { UtilityService } from "../../services/utility.service";
   styleUrls: ["./dang-ky-cu-tru.component.scss"]
 })
 export class DangKyCuTruComponent extends AppComponent implements OnInit {
+  public readonly loaiCuTrus = [
+    { name: "Tạm vắng", value: true },
+    { name: "Tạm trú", value: false }
+  ];
   constructor(
     protected cuTruService: CutruService,
     protected utilitiesService: UtilityService

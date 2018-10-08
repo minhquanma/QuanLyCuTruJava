@@ -79,6 +79,17 @@ public class CuTruService {
         return cuTruDAO.findByPersonalAddress(diaChiDan);
     }
 
+    // Tạo mới cư trú
+    public CuTru createCuTru(CuTru cuTru) {
+        CuTru createdCuTru = cuTruDAO.save(cuTru);
+        return createdCuTru;
+    }
+    // Cập nhật cư trú theo id
+    public void updateCuTru(CuTru cuTru) {
+        cuTruDAO.save(cuTru);
+    }
+
+    // Duyệt cư trú theo id
     // Lấy thông tin tóm tắt cho trang chủ
     public TrangChu getTrangChuInfo() {
         // Tạo mới object TrangChu

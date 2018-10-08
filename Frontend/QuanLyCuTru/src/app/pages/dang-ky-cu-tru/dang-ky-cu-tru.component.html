@@ -76,9 +76,15 @@
         </div>
 
         <div class="form-group">
-          <label for="loaiCuTru" class="control-label"></label>
+          <label for="loaiCuTru" class="control-label">Loại cư trú</label>
           <div class="">
-            <!-- > Dropdown list </-->
+            <div class="dropdown">
+              <select class="form-control" name="loaiCuTru">
+                <option [value]="loaiCuTru.value" *ngFor="let loaiCuTru of loaiCuTrus">
+                  {{ loaiCuTru.name }}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
 
