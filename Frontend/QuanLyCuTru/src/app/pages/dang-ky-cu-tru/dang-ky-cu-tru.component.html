@@ -79,7 +79,7 @@
           <label for="loaiCuTru" class="control-label">Loại cư trú</label>
           <div class="">
             <div class="dropdown">
-              <select class="form-control" name="loaiCuTru">
+              <select (change)="onLoaiCuTruSelectChanged($event.target.value)" class="form-control" name="loaiCuTru">
                 <option [value]="loaiCuTru.value" *ngFor="let loaiCuTru of loaiCuTrus">
                   {{ loaiCuTru.name }}
                 </option>
@@ -92,14 +92,14 @@
           <div class="">
             <div id="CongDans" class="list-congdan list-group">
               <li class="list-group-item active" style="background: #000;">Danh sách công dân</li>
-              <a class="list-group-item list-group-item-action">123</a>
+              <a *ngFor="let congDan of congDanList" class="list-group-item list-group-item-action">123</a>
             </div>
             <br />
             <div class="input-group mb-3">
               <input id="inputUserId" type="text" class="form-control" placeholder="Nhập mã công dân" aria-label="Recipient's username"
                 aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button id="buttonAdd" class="btn btn-outline-secondary" type="button">Thêm</button>
+                <button (click)="onAddCongDanClicked()" class="btn btn-outline-secondary" type="button">Thêm</button>
               </div>
             </div>
           </div>
@@ -107,7 +107,6 @@
 
         <div class="form-group">
           <div class="col-md-offset-2 ">
-
             <input id="buttonSend" type="submit" value="Tạo mới" class="btn btn-success" />
           </div>
         </div>
