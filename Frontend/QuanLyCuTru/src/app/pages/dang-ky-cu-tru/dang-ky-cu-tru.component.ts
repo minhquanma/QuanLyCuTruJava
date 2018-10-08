@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { CutruService } from '../../services/cutru.service';
 import { UtilityService } from '../../services/utility.service';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-dang-ky-cu-tru',
@@ -9,7 +10,9 @@ import { UtilityService } from '../../services/utility.service';
   styleUrls: ['./dang-ky-cu-tru.component.scss']
 })
 export class DangKyCuTruComponent extends AppComponent implements OnInit {
-  public bsValue: Date = new Date();
+  public ngayTao: Date = new Date();
+  public ngayDangKy: Date = new Date();
+  public ngayHetHan: Date = new Date();
 
   constructor(
     protected cuTruService: CutruService,
@@ -20,5 +23,11 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
     utilitiesService.setDisplayFooter(true);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ngayHetHan.setMonth(this.ngayHetHan.getMonth() + 1);
+  }
+
+  public submit(value) {
+    console.log(value);
+  }
 }

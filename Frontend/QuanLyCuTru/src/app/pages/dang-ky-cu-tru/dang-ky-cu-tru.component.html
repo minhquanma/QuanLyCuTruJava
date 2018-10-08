@@ -1,78 +1,59 @@
 <div class="body-content container">
   <h2>Đăng ký cư trú</h2>
-  <form action="post">
+  <form #f="ngForm" (ngSubmit)="submit(f.value)">
     <div class="row">
       <hr />
       <div class="col-12 col-md-6">
         <div class="form-group">
           <label for="ngayTao" class="control-label">Ngày tạo</label>
-          <div class="">
-            <app-datepicker [bsValue]="bsValue"></app-datepicker>
-          </div>
+          <input type="text" class="form-control" name="ngayTao" bsDatepicker [bsValue]="ngayTao" ngModel #ngayTao="ngModel">
         </div>
 
         <div class="form-group">
           <label for="ngayDangKy" class="control-label">Ngày đăng ký</label>
-          <div class="">
-            <app-datepicker [bsValue]="bsValue"></app-datepicker>
-          </div>
+          <input type="text" class="form-control" name="ngayDangKy" bsDatepicker [bsValue]="ngayDangKy" ngModel #ngayDangKy="ngModel">
         </div>
 
         <div class="form-group">
           <label for="ngayHetHan" class="control-label">Ngày hết hạn</label>
-          <div class="">
-            <app-datepicker [bsValue]="bsValue"></app-datepicker>
-          </div>
+          <input type="text" class="form-control" name="ngayHetHan" bsDatepicker [bsValue]="ngayHetHan" ngModel #ngayHetHan="ngModel">
         </div>
 
         <div class="form-group">
           <label for="email" class="control-label">Email</label>
-          <div class="">
-            <input class="form-control" type="text" id="email">
-          </div>
+          <input class="form-control" type="text" id="email" name="email" ngModel #email="ngModel">
         </div>
 
         <div class="form-group">
           <label for="dienThoai" class="control-label">Điện thoại</label>
-          <div class="">
-            <input class="form-control" type="text" id="dienThoai">
-          </div>
+          <input class="form-control" type="text" id="dienThoai" name="dienThoai" ngModel #dienThoai="ngModel">
         </div>
 
         <div class="form-group">
           <label for="soNha" class="control-label">Số nhà</label>
-          <div class="">
-            <input class="form-control" type="text" id="soNha">
-          </div>
+          <input class="form-control" type="text" id="soNha" name="soNha" ngModel #soNha="ngModel">
         </div>
 
         <div class="form-group">
           <label for="duong" class="control-label">Đường</label>
-          <div class="">
-            <input class="form-control" type="text" id="duong">
-          </div>
+          <input class="form-control" type="text" id="duong" name="duong" ngModel #duong="ngModel">
         </div>
 
       </div>
       <div class="col-12 col-md-6">
         <div class="form-group">
           <label for="phuong" class="control-label">Phường</label>
-          <div class="">
-            <input class="form-control" type="text" id="phuong">
-          </div>
+          <input class="form-control" type="text" id="phuong" name="phuong" ngModel #phuong="ngModel">
         </div>
 
         <div class="form-group">
           <label for="quan" class="control-label">Quận</label>
-          <div class="">
-            <input class="form-control" type="text" id="quan">
-          </div>
+          <input class="form-control" type="text" id="quan" name="quan" ngModel #quan="ngModel">
         </div>
+
         <div class="form-group">
           <label for="thanhPho" class="control-label">Thành phố</label>
-          <div class="">
-            <input class="form-control" type="text" id="thanhPho">
-          </div>
+          <input class="form-control" type="text" id="thanhPho" name="thanhPho" ngModel #thanhPho="ngModel">
         </div>
 
         <div class="form-group">
@@ -101,8 +82,7 @@
 
         <div class="form-group">
           <div class="col-md-offset-2 ">
-
-            <input id="buttonSend" type="submit" value="Tạo mới" class="btn btn-success" />
+            <button class="btn btn-success">Tạo mới</button>
           </div>
         </div>
       </div>
