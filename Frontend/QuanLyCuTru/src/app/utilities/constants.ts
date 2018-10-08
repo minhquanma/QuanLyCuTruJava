@@ -1,6 +1,6 @@
 export enum API_URL {
   CUTRU = "http://localhost:7777/quanlycutru",
-  DAN = "http://mmq.noip.me:7777/quanlydan"
+  DAN = "http://localhost:7777/quanlydan"
 }
 
 export enum IMAGE {

@@ -3,6 +3,7 @@ import { AppComponent } from "../../app.component";
 import { CutruService } from "../../services/cutru.service";
 import { UtilityService } from "../../services/utility.service";
 import { NguoiDung } from "../../models/standards/nguoidung";
+import { CongdanService } from "../../services/congdan.service";
 
 @Component({
   selector: "app-dang-ky-cu-tru",
@@ -21,10 +22,11 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
   public bsValue: Date = new Date();
 
   private selectedLoaiCuTru: number;
-  public congDanList: String[] = [];
+  public congDanList: Array<NguoiDung> = new Array<NguoiDung>();
 
   constructor(
     protected cuTruService: CutruService,
+    protected congDanService: CongdanService,
     protected utilitiesService: UtilityService
   ) {
     super(cuTruService, utilitiesService);
@@ -36,8 +38,29 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
     this.ngayHetHan.setMonth(this.ngayHetHan.getMonth() + 1);
   }
 
-  public onAddCongDanClicked(value): void {
-    this.congDanList.push(value);
+  public onAddCongDanClicked(value: number): void {
+    // 1. Kiểm tra xem trong mảng đã tồn tại người dùng này hay chưa
+    // Tìm kiếm trong mảng với id được nhập từ user
+    const findCongDan = this.congDanList.find(congDan => congDan.id == value);
+
+    // <> Trường hợp mảng chưa tồn tại người dùng này
+    if (findCongDan == null) {
+      // 2. Lấy thông tin người dùng từ server
+      this.congDanService.getNguoiDungById(value, congDan => {
+        // <> Trường hợp tìm thấy công dân
+        if (congDan != null) {
+          // 3. Thêm người dùng này vào danh sách công dân
+          this.congDanList.push(congDan);
+        } else {
+          // <> Trường hợp không tìm thấy công dân
+          window.alert("Khong tim thay cong dan");
+        }
+      });
+    } else {
+      // <> Trường hợp mảng đã tồn tại người dùng này
+      window.alert("Vui long nhap cong dan khac!");
+    }
+    // Kết thúc xử lý
   }
 
   public onLoaiCuTruSelectChanged(value: number): void {

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(Constants.QUANLYDAN_URL)
-@CrossOrigin(origins = Constants.CLIENT_URL)
+@CrossOrigin()
 public class QuanLyDanController {
 
     @Autowired

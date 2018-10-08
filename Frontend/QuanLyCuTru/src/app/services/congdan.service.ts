@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { NguoiDung } from '../models/standards/nguoidung';
-import { API_URL } from '../utilities/constants';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "../../../node_modules/@angular/common/http";
+import { NguoiDung } from "../models/standards/nguoidung";
+import { API_URL } from "../utilities/constants";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class CongdanService {
   constructor(private http: HttpClient) {}
@@ -24,8 +24,13 @@ export class CongdanService {
     const observable = this.http.get<NguoiDung>(
       `${API_URL.DAN}/${nguoiDungId}`
     );
-    observable.subscribe((data: NguoiDung) => {
-      serviceCallback(data);
-    });
+    observable.subscribe(
+      (data: NguoiDung) => {
+        serviceCallback(data);
+      },
+      error => {
+        serviceCallback(null);
+      }
+    );
   }
 }
