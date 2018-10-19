@@ -1,3 +1,4 @@
+import { CuTruDTO } from './../models/customizes/cutru.dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CuTru } from '../models/customizes/cutru';
@@ -27,7 +28,7 @@ export class CutruService {
   }
 
   // Tạo mới cư trú
-  public createCuTru(cuTru: CuTru, serviceCallback: (data: CuTru) => void) {
+  public createCuTru(cuTru: CuTruDTO, serviceCallback: (data: CuTru) => void) {
     const observable = this.http.post(API_URL.CUTRU, cuTru);
     observable.subscribe(
       (data: CuTru) => {

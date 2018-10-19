@@ -1,3 +1,4 @@
+import { CuTruDTO } from './../../models/customizes/cutru.dto';
 import { CuTru } from './../../models/customizes/cutru';
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { AppComponent } from '../../app.component';
@@ -70,15 +71,19 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
   }
 
   public onDangKyCuTruClicked(value) {
-    // const cuTru: CuTru = new CuTru();
-    // cuTru.ngayDangKy = value.ngayDangKy;
-    // cuTru.ngayHetHan = value.ngayHetHan;
-    // cuTru.ngayTao = value.ngayTao;
-    // cuTru.congDans = this.congDanList;
-    // this.cuTruService.createCuTru(cuTru, result => {
-    //   console.log(result);
-    // });
-    console.table(value);
+    const cuTruData: CuTruDTO = new CuTruDTO(value);
+    // Gắn danh sách công dân vào cư trú
+    cuTruData.congDan = this.congDanList;
+    // Gửi lên server
+    this.cuTruService.createCuTru(cuTruData, result => {
+      console.log(result);
+      if (result === null) {
+        window.alert('Dang ky cu tru that bai!');
+      } else {
+        // Sau khi đăng ký thành công thì chuyển về trang cư trú
+        // TODO: chuyển về trang quản lý cư trú
+      }
+    });
   }
 
   public onLoaiCuTruSelectChanged(value: number): void {
