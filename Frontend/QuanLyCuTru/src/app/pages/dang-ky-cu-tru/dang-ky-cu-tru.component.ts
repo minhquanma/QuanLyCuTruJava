@@ -6,6 +6,7 @@ import { CutruService } from '../../services/cutru.service';
 import { UtilityService } from '../../services/utility.service';
 import { NguoiDung } from '../../models/standards/nguoidung';
 import { CongdanService } from '../../services/congdan.service';
+import { LOAI_CU_TRU } from 'src/app/utilities/constants';
 
 @Component({
   selector: 'app-dang-ky-cu-tru',
@@ -23,7 +24,7 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
   ];
   public bsValue: Date = new Date();
 
-  private selectedLoaiCuTru: number;
+  private selectedLoaiCuTru = 0;
   // Mảng lưu danh sách công dân đăng ký (mặc định sẽ là rỗng)
   public congDanList: Array<NguoiDung> = new Array<NguoiDung>();
 
@@ -72,8 +73,18 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
 
   public onDangKyCuTruClicked(value) {
     const cuTruData: CuTruDTO = new CuTruDTO(value);
+    // Gắn id loại cư trú đã chọn
+    // Mặc định là Tạm Vắng = 1
+    cuTruData.loaiCuTruId =
+      this.selectedLoaiCuTru === 0
+        ? LOAI_CU_TRU.TAM_VANG
+        : this.selectedLoaiCuTru;
+
     // Gắn danh sách công dân vào cư trú
-    cuTruData.congDan = this.congDanList;
+    cuTruData.congDans = this.congDanList;
+
+    console.table(cuTruData);
+
     // Gửi lên server
     this.cuTruService.createCuTru(cuTruData, result => {
       console.log(result);
@@ -87,6 +98,6 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
   }
 
   public onLoaiCuTruSelectChanged(value: number): void {
-    console.log(value);
+    this.selectedLoaiCuTru = +value;
   }
 }

@@ -13,7 +13,7 @@ export class CuTruDTO {
   public daDuyet: boolean;
   public loaiCuTruId: number;
   public canBoId: number;
-  public congDan: NguoiDung[];
+  public congDans: NguoiDung[];
 
   constructor(cuTru) {
     this.ngayTao = new Date(cuTru.ngayTao);
@@ -27,6 +27,6 @@ export class CuTruDTO {
     this.daDuyet = false;
     this.loaiCuTruId = cuTru.loaiCuTruId;
     this.canBoId = cuTru.canBoId;
-    this.congDan = cuTru.congDans;
+    this.congDans = cuTru.congDans;
   }
 }
