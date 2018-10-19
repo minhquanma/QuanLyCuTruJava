@@ -25,4 +25,37 @@ export class CutruService {
       serviceCallback(data);
     });
   }
+
+  // Tạo mới cư trú
+  public createCuTru(cuTru: CuTru, serviceCallback: (data: CuTru) => void) {
+    const observable = this.http.post(API_URL.CUTRU, cuTru);
+    observable.subscribe(
+      (data: CuTru) => {
+        serviceCallback(data);
+      },
+      error => {
+        serviceCallback(null);
+        console.log(error);
+      }
+    );
+  }
+
+  // Cập nhật cư trú theo id
+  public updateCuTru(
+    id: number,
+    cuTru: CuTru,
+    serviceCallback: (data: CuTru) => void
+  ) {
+    const url = `${API_URL.CUTRU}/${id}`;
+    const observable = this.http.put(url, cuTru);
+    observable.subscribe(
+      (data: CuTru) => {
+        serviceCallback(data);
+      },
+      error => {
+        serviceCallback(null);
+        console.log(error);
+      }
+    );
+  }
 }

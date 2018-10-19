@@ -1,6 +1,6 @@
 import { NguoiDung } from '../standards/nguoidung';
 
-export interface CuTru {
+export class CuTru {
   id: number;
   ngayTao: Date;
   ngayDangKy: Date;

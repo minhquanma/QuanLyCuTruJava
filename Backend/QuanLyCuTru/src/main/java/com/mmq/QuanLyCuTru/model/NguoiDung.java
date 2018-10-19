@@ -36,16 +36,25 @@ public class NguoiDung {
     @Column(name = "ThanhPho")
     private String thanhPho;
 
+    @Column(name = "NoiSinh")
     private String noiSinh;
 
+    @Column(name = "QueQuan")
     private String queQuan;
 
+    @Column(name = "QuocTich")
     private String quocTich;
 
+    @Column(name = "Avatar")
     private String avatar;
 
+    @Column(name = "DienThoai")
+    private String dienThoai;
+
+    @Column(name = "IdentityId")
     private String identityId;
 
+    @Column(name = "ChucVuId")
     private int chucVuId;
 
     public int getId() {
@@ -78,6 +87,14 @@ public class NguoiDung {
 
     public void setSinhNhat(Date sinhNhat) {
         this.sinhNhat = sinhNhat;
+    }
+
+    public String getDienThoai() {
+        return dienThoai;
+    }
+
+    public void setDienThoai(String dienThoai) {
+        this.dienThoai = dienThoai;
     }
 
     public String getSoNha() {
