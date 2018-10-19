@@ -30,9 +30,13 @@ export class ChiTietCongDanComponent extends AppComponent implements OnInit {
   }
 
   private callAPI_GetNguoiDungById() {
-    const congDanId = this.route.snapshot.paramMap['id'];
+    const congDanId = this.route.snapshot.params['id'];
     this.congDanService.getNguoiDungById(congDanId, result => {
-      this.congDan = result;
+      this.handlingGetNguoiDungById(result);
     });
+  }
+
+  private handlingGetNguoiDungById(result: NguoiDung) {
+    this.congDan = result;
   }
 }

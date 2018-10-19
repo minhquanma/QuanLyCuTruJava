@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'cutru', component: CutruComponent },
   { path: 'dangkycutru', component: DangKyCuTruComponent },
   { path: 'congdan', component: CongDanComponent },
-  { path: 'chitietcongdan', component: ChiTietCongDanComponent },
+  { path: 'chitietcongdan/:id', component: ChiTietCongDanComponent },
   { path: 'dangkycutru', component: DangKyCuTruComponent }
 ];
 

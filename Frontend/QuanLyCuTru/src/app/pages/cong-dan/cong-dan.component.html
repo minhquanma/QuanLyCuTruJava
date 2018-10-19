@@ -65,7 +65,7 @@
           </th>
         </thead>
 
-        <tr class="clickable-row" *ngFor="let congDan of congDans">
+        <tr class="clickable-row" *ngFor="let congDan of congDans" [routerLink]="'/chitietcongdan/' + congDan.id">
           <td>
             {{ congDan.id }}
           </td>
