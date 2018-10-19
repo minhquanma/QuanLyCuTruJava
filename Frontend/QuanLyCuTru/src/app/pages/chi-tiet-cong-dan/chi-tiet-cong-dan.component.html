@@ -6,26 +6,26 @@
       <hr />
       <div class="row align-items-center">
         <div class="col-md-5 my-3">
-          <img alt="avatar" class="avatar" />
+          <img alt="avatar" class="avatar" [src]="congDan.avatar"/>
         </div>
         <div class="table-responsive-md">
           <table class="table">
             <tbody>
               <tr>
                 <th class="border-0">Mã số</th>
-                <td class="border-0">{{ congDan.id }}</td>
+                <td class="border-0">{{ congDan?.id }}</td>
               </tr>
               <tr>
                 <th class="border-0">Email</th>
-                <td class="border-0">Email</td>
+                <td class="border-0">Chưa đăng ký</td>
               </tr>
               <tr>
                 <th class="border-0">Giới tính</th>
-                <td class="border-0">{{ congDan.gioiTinh }}</td>
+                <td class="border-0">{{ congDan?.gioiTinh | gioiTinh }}</td>
               </tr>
               <tr>
                 <th class="border-0">Sinh nhật</th>
-                <td class="border-0">{{ congDan.sinhNhat }}</td>
+                <td class="border-0">{{ congDan?.sinhNhat | date: 'dd/MM/yyyy' }}</td>
               </tr>
               <tr>
                 <th class="border-0">Địa chỉ</th>
@@ -33,15 +33,15 @@
               </tr>
               <tr>
                 <th class="border-0">Nơi sinh</th>
-                <td class="border-0">{{ congDan.noiSinh }}</td>
+                <td class="border-0">{{ congDan?.noiSinh }}</td>
               </tr>
               <tr>
                 <th class="border-0">Quê quán</th>
-                <td class="border-0">{{ congDan.queQuan }}</td>
+                <td class="border-0">{{ congDan?.queQuan }}</td>
               </tr>
               <tr>
                 <th class="border-0">Quốc tịch</th>
-                <td class="border-0">{{ congDan.quocTich }}</td>
+                <td class="border-0">{{ congDan?.quocTich }}</td>
               </tr>
               <tr>
               </tr>
@@ -53,7 +53,7 @@
 
     <p>
       <button class="btn btn-primary mr-2">Sửa</button>
-      <button id="backLink" class="btn btn-info">Trở về</button>
+      <button id="backLink" class="btn btn-info" routerLink="/congdan">Trở về</button>
     </p>
   </div>
 </div>
