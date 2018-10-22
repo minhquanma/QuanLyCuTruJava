@@ -46,19 +46,18 @@ export class CutruComponent extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cuTrus = [];
     this.callAPI_GetAllCuTru();
   }
 
   private callAPI_GetAllCuTru() {
-    // Lấy dữ liệu từ server gán cho trang cư trú
     this.cuTruService.getCuTrus(result => {
       this.handlingGetAllCuTru(result);
     });
   }
 
-  private handlingGetAllCuTru(data: CuTru[]) {
-    this.cuTrus = [];
-    data.forEach(m => this.cuTrus.push(new CuTruVM(m)));
+  private handlingGetAllCuTru(result: CuTru[]) {
+    result.forEach(m => this.cuTrus.push(new CuTruVM(m)));
   }
 }
 
