@@ -6,8 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./datepicker.component.scss']
 })
 export class DatepickerComponent implements OnInit {
-  @Input()
-  bsValue: Date;
+  @Input() bsValue: Date;
 
   constructor() {}
 
