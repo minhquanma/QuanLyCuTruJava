@@ -2,11 +2,12 @@ package com.mmq.QuanLyCuTru.DAO;
 
 import com.mmq.QuanLyCuTru.model.CuTru;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -69,4 +70,10 @@ public interface CuTruDAO extends JpaRepository<CuTru, Integer>, CuTruDAOCustom 
 
     // Số cư trú đã hết hạn
     int countByNgayHetHanLessThan(Date ngayHetHan);
+
+    // Duyệt cư trú
+    @Modifying
+    @Transactional
+    @Query("UPDATE CuTru c SET c.daDuyet = :daDuyet WHERE c.id = :id")
+    void updateTrangThaiDuyet(@Param("id") int id, @Param("daDuyet") boolean daDuyet);
 }

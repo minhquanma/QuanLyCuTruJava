@@ -1,3 +1,4 @@
+import { ChiTietCuTruComponent } from './pages/chi-tiet-cu-tru/chi-tiet-cu-tru.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './pages/landing/landing.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'dangkycutru', component: DangKyCuTruComponent },
   { path: 'congdan', component: CongDanComponent },
   { path: 'chitietcongdan/:id', component: ChiTietCongDanComponent },
-  { path: 'dangkycutru', component: DangKyCuTruComponent }
+  { path: 'dangkycutru', component: DangKyCuTruComponent },
+  { path: 'chitietcutru/:id', component: ChiTietCuTruComponent }
 ];
 
 @NgModule({

@@ -49,7 +49,7 @@ public class QuanLyCuTruController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        // Trường hợp object CuTru có dữ liệu
+        //        // Trường hợp object CuTru có dữ liệu
         // Trả về object CuTru
         return ResponseEntity.ok(cuTru);
 
@@ -201,6 +201,23 @@ public class QuanLyCuTruController {
     }
 
     // Duyệt cư trú theo id
+    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+    public ResponseEntity<?> duyetCuTru(@PathVariable int id) {
+        // Lấy ra 1 object CuTru dựa trên param id
+        CuTru cuTru = cuTruService.getCuTruById(id);
+
+        // Nếu không tìm thấy cư trú
+        if (cuTru == null)
+            // Trả về mã lỗi 400 - Bad Request
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        // Cập nhật trạng thái duyệt từ false thành true
+        cuTru.setDaDuyet(true);
+        cuTruService.updateCuTru(cuTru);
+
+        // Trả về object CuTru
+        return ResponseEntity.ok(cuTru);
+    }
 
     // Lấy thông tin tóm tắt cho trang chủ
     @RequestMapping(value = "/trangchu", method = RequestMethod.GET)

@@ -97,7 +97,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="clickable-row" *ngFor="let cuTru of trangChu?.cuTrus">
+            <tr class="clickable-row" *ngFor="let cuTru of trangChu?.cuTrus" [routerLink]="'/chitietcutru/' + cuTru.id">
               <th scope="row">{{ cuTru.id }}</th>
               <td>{{ cuTru.hoTen }}</td>
               <td>{{ cuTru.diaChi }}</td>

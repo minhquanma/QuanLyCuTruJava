@@ -22,7 +22,7 @@ export class ChiTietCongDanComponent extends AppComponent implements OnInit {
   ) {
     super(cuTruService, utilitiesService);
     utilitiesService.setDisplayHeader(true);
-    utilitiesService.setDisplayFooter(false);
+    utilitiesService.setDisplayFooter(true);
   }
 
   ngOnInit() {

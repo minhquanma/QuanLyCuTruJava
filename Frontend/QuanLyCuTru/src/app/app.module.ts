@@ -18,6 +18,7 @@ import { GioiTinhPipe } from './pipes/gioi-tinh.pipe';
 import { ChiTietCongDanComponent } from './pages/chi-tiet-cong-dan/chi-tiet-cong-dan.component';
 import { TrangchuComponent } from './pages/trangchu/trangchu.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { ChiTietCuTruComponent } from './pages/chi-tiet-cu-tru/chi-tiet-cu-tru.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     GioiTinhPipe,
     ChiTietCongDanComponent,
     TrangchuComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    ChiTietCuTruComponent
   ],
   imports: [
     BrowserModule,
