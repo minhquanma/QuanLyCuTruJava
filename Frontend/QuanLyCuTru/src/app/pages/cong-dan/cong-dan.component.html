@@ -65,7 +65,7 @@
           </th>
         </thead>
 
-        <tr class="clickable-row" *ngFor="let congDan of congDans" [routerLink]="'/chitietcongdan/' + congDan.id">
+        <tr class="clickable-row" *ngFor="let congDan of congDansPagination" [routerLink]="'/chitietcongdan/' + congDan.id">
           <td>
             {{ congDan.id }}
           </td>
@@ -102,6 +102,11 @@
             <img class="avatar" [src]="congDan.avatar">
           </td>
         </tr>
+        <pagination
+          [totalItems]="congDans.length"
+          [itemsPerPage]="5"
+          (pageChanged)="pageChanged($event)">
+      </pagination>
       </table>
     </div>
   </div>

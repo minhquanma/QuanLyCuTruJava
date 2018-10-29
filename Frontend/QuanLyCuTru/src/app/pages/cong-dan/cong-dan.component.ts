@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CutruService } from '../../services/cutru.service';
-import { UtilityService } from '../../services/utility.service';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { AppComponent } from '../../app.component';
 import { NguoiDung } from '../../models/standards/nguoidung';
 import { CongdanService } from '../../services/congdan.service';
+import { CutruService } from '../../services/cutru.service';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-cong-dan',
@@ -12,6 +13,7 @@ import { CongdanService } from '../../services/congdan.service';
 })
 export class CongDanComponent extends AppComponent implements OnInit {
   public congDans: NguoiDung[];
+  public congDansPagination: NguoiDung[];
 
   public readonly timKiems = [
     { name: 'Họ tên', value: 'hoTen' },
@@ -42,6 +44,17 @@ export class CongDanComponent extends AppComponent implements OnInit {
 
   ngOnInit() {
     this.callAPI_GetNguoiDungs();
+    this.init();
+  }
+
+  public pageChanged(event: PageChangedEvent): void {
+    const startItem = (event.page - 1) * event.itemsPerPage;
+    const endItem = event.page * event.itemsPerPage;
+    this.congDansPagination = this.congDans.slice(startItem, endItem);
+  }
+
+  private init() {
+    this.congDansPagination = this.congDans.slice(0, 5);
   }
 
   private callAPI_GetNguoiDungs() {
