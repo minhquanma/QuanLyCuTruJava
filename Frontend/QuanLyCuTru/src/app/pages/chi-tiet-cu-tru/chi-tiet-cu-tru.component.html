@@ -10,41 +10,42 @@
                         Danh sách công dân
                     </a>
                     <ng-container *ngIf="cuTru?.congDans">
-                      <a *ngFor="let congDan of cuTru.congDans" href="#" class="list-group-item list-group-item-action">{{ congDan.hoTen  }}</a>
+                        <a *ngFor="let congDan of cuTru.congDans" href="#" class="list-group-item list-group-item-action">{{
+                            congDan.hoTen }}</a>
                     </ng-container>
                 </div>
             </div>
             <div class="col-12 col-md-6 mt-3">
                 <dt>Địa chỉ</dt>
                 <dd>{{ cuTru?.diaChi }}</dd>
-    
+
                 <dt>Loại cư trú</dt>
                 <dd>{{ cuTru?.loaiCuTruId | loaiCuTru }}</dd>
-    
+
                 <dt>Ngày tạo</dt>
                 <dd>{{ cuTru?.ngayTao | date: 'dd/MM/yyyy'}}</dd>
-    
+
                 <dt>Ngày đăng ký</dt>
                 <dd>{{ cuTru?.ngayDangKy | date: 'dd/MM/yyyy'}}</dd>
-    
+
                 <dt>Ngày hết hạn</dt>
                 <dd>{{ cuTru?.ngayHetHan | date: 'dd/MM/yyyy'}}</dd>
             </div>
             <div class="col-12 col-md-6 mt-md-3">
                 <dt>Email</dt>
                 <dd>{{ cuTru?.email }}</dd>
-    
+
                 <dt>Điện thoại</dt>
                 <dd>{{ cuTru?.dienThoai }}</dd>
-    
+
                 <dt>Trạng thái</dt>
                 <dd>
-                  <div *ngIf="cuTru?.daDuyet === true; else chuaDuyet">{{ cuTru?.daDuyet | trangThai }}</div>
-                  <ng-template #chuaDuyet>
-                    <button class="btn btn-success" (click)="duyetCuTru()">Click vào đây để duyệt</button>
-                  </ng-template>
+                    <div *ngIf="cuTru?.daDuyet === true; else chuaDuyet">{{ cuTru?.daDuyet | trangThai }}</div>
+                    <ng-template #chuaDuyet>
+                        <button class="btn btn-success" (click)="duyetCuTru()">Click vào đây để duyệt</button>
+                    </ng-template>
                 </dd>
-    
+
                 <dt>Cán bộ duyệt</dt>
                 <dd>{{ cuTru?.canBoId }}</dd>
             </div>
@@ -52,6 +53,6 @@
     </div>
     <p class="text-center">
         <a href="#" class="btn btn-info mr-2">Sửa</a>
-        <a href="#" class="btn btn-primary">Quay về</a>
+        <a href="" class="btn btn-primary" (click)="onQuayVeClick()">Quay về</a>
     </p>
 </div>

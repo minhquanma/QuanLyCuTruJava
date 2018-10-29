@@ -1,17 +1,18 @@
-import { CuTruDTO } from './../../models/customizes/cutru.dto';
-import { CuTru } from './../../models/customizes/cutru';
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { AppComponent } from '../../app.component';
-import { CutruService } from '../../services/cutru.service';
-import { UtilityService } from '../../services/utility.service';
-import { NguoiDung } from '../../models/standards/nguoidung';
-import { CongdanService } from '../../services/congdan.service';
-import { LOAI_CU_TRU } from 'src/app/utilities/constants';
+import { CuTruDTO } from "./../../models/customizes/cutru.dto";
+import { CuTru } from "./../../models/customizes/cutru";
+import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
+import { AppComponent } from "../../app.component";
+import { CutruService } from "../../services/cutru.service";
+import { UtilityService } from "../../services/utility.service";
+import { NguoiDung } from "../../models/standards/nguoidung";
+import { CongdanService } from "../../services/congdan.service";
+import { LOAI_CU_TRU } from "src/app/utilities/constants";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-dang-ky-cu-tru',
-  templateUrl: './dang-ky-cu-tru.component.html',
-  styleUrls: ['./dang-ky-cu-tru.component.scss']
+  selector: "app-dang-ky-cu-tru",
+  templateUrl: "./dang-ky-cu-tru.component.html",
+  styleUrls: ["./dang-ky-cu-tru.component.scss"]
 })
 export class DangKyCuTruComponent extends AppComponent implements OnInit {
   public ngayTao: Date = new Date();
@@ -19,8 +20,8 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
   public ngayHetHan: Date = new Date();
 
   public readonly loaiCuTrus = [
-    { name: 'Tạm vắng', value: 1 },
-    { name: 'Tạm trú', value: 2 }
+    { name: "Tạm vắng", value: 1 },
+    { name: "Tạm trú", value: 2 }
   ];
   public bsValue: Date = new Date();
 
@@ -31,7 +32,8 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
   constructor(
     protected cuTruService: CutruService,
     protected congDanService: CongdanService,
-    protected utilitiesService: UtilityService
+    protected utilitiesService: UtilityService,
+    protected router: Router
   ) {
     super(cuTruService, utilitiesService);
     utilitiesService.setDisplayHeader(true);
@@ -60,12 +62,12 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
         } else {
           // <> Trường hợp không tìm thấy công dân
           // TODO: hiện label thông báo lỗi
-          window.alert('Không tìm thấy công dân với mã số ' + value);
+          window.alert("Không tìm thấy công dân với mã số " + value);
         }
       });
     } else {
       // <> Trường hợp mảng đã tồn tại người dùng này
-      window.alert('Vui long nhap cong dan khac!');
+      window.alert("Vui long nhap cong dan khac!");
       console.log(findCongDan);
     }
     // Kết thúc xử lý
@@ -89,10 +91,11 @@ export class DangKyCuTruComponent extends AppComponent implements OnInit {
     this.cuTruService.createCuTru(cuTruData, result => {
       console.log(result);
       if (result === null) {
-        window.alert('Dang ky cu tru that bai!');
+        window.alert("Đăng ký cư trú thất bại!");
       } else {
         // Sau khi đăng ký thành công thì chuyển về trang cư trú
         // TODO: chuyển về trang quản lý cư trú
+        this.router.navigate(["/dangkycutru"]);
       }
     });
   }
