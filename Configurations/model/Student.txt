@@ -1,0 +1,44 @@
+@SqlResultSetMappings({
+	@SqlResultSetMapping(name="StudentInfoModelResult",
+        classes = {
+            @ConstructorResult(
+                targetClass = StudentInfoModel.class,
+                columns = {
+                    @ColumnResult(name = "id"),
+                    @ColumnResult(name = "firstName"),
+                    @ColumnResult(name = "lastName"),
+                }
+            )
+        }
+    )
+})
+@Entity
+@Table(name="STUDENT")
+// @NamedQuery(name="STUDENT.findAll", query="SELECT s FROM Student s")   
+public class Student {
+    @Id
+    @Column(name="STUDENT_ID")
+    private String id;
+    
+    @Column(name="FIRST_NAME")
+    private String firstName;
+    
+    @Column(name="LAST_NAME")
+    private String lastName;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="DATE_OF_BIRTH")
+    private String dateOfBirth;
+    
+    @Column(name="GENDER")
+    private int gender;
+    
+    @Column(name="ADDRESS")
+    private String address;
+    
+    // Getters & Setters
+    // End 
+    
+    // Constructors
+    // End
+}

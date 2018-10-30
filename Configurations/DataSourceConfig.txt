@@ -1,0 +1,29 @@
+@Configuration
+public class DataSourceConfig {
+	// 1st DataSource
+	@ConfigurationProperties(prefix = "spring.datasource.first")
+	@Bean
+	@Primary
+	public DataSourceProperties firstDataSourceProperties() {
+		return new DataSourceProperties();
+	}
+	
+	@Bean(name= {"firstDataSource"})
+    @Primary
+    public DataSource firstDataSource() {
+        return firstDataSourceProperties().initializeDataSourceBuilder().build();
+    }
+	
+	// 2nd DataSource
+	@ConfigurationProperties(prefix = "spring.datasource.second")
+	@Bean
+	public DataSourceProperties secondDataSourceProperties() {
+		return new DataSourceProperties();
+	}
+	
+	@Bean(name= {"secondDataSource"})
+    @Primary
+    public DataSource secondDataSource() {
+        return secondDataSourceProperties().initializeDataSourceBuilder().build();
+    }
+}

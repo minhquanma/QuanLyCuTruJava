@@ -1,0 +1,51 @@
+@Configuration
+@EnableJpaRepositories(
+        entityManagerFactoryRef = "firstEntityManagerFactory",
+        basePackages = "com.mmq.quanlycutru"
+)
+class FirstEntityManagerConfig {
+	@Bean(name = "firstEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean firstEntityManagerFactory(final EntityManagerFactoryBuilder builder,
+                                                                             final @Qualifier("firstDataSource") DataSource dataSource) {
+        return builder
+                .dataSource(dataSource)
+                .packages("com.mmq.quanlycutru.model")
+                .persistenceUnit("firstPersistence")
+                .properties(singletonMap("hibernate.hbm2ddl.auto", "none"))
+                .build();
+    }
+	
+	@Primary
+    @Bean(name = "transactionManagerCom")
+    public PlatformTransactionManager transactionManager(
+      @Qualifier("firstEntityManagerFactory") EntityManagerFactory 
+      entityManagerFactory) {
+		return new JpaTransactionManager(entityManagerFactory);
+	}
+}
+
+@Configuration
+@EnableJpaRepositories(
+        entityManagerFactoryRef = "secondEntityManagerFactory",
+        basePackages = "com.mmq.quanlycutru"
+)
+class SecondEntityManagerConfig {
+	@Bean(name = "secondEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean secondEntityManagerFactoryEntityManagerFactory(final EntityManagerFactoryBuilder builder,
+                                                                             final @Qualifier("secondDataSource") DataSource dataSource) {
+        return builder
+                .dataSource(dataSource)
+                .packages("com.mmq.quanlycutru.model")
+                .persistenceUnit("secondPersistence")
+                .properties(singletonMap("hibernate.hbm2ddl.auto", "none"))
+                .build();
+    }
+	
+	@Primary
+    @Bean(name = "transactionManagerCom")
+    public PlatformTransactionManager transactionManager(
+      @Qualifier("secondEntityManagerFactory") EntityManagerFactory 
+      entityManagerFactory) {
+		return new JpaTransactionManager(entityManagerFactory);
+	}
+}

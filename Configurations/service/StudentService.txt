@@ -1,0 +1,20 @@
+@Service
+public class StudentService {
+    @Autowired
+    private StudentDao studentDao;
+    
+    public List<StudentInfoModel> getStudents() {
+        try {
+			List<StudentInfoModel> studentList = studentDao.getStudents();
+
+			return studentList;
+
+		} catch (NoResultException noResultE) {
+			return null;
+
+		} catch (Exception e) {
+            // ApplicationException class need to be implemented.
+			throw new ApplicationException();
+		}
+    }
+}

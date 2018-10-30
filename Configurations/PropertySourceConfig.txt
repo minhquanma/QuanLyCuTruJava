@@ -1,0 +1,7 @@
+@PropertySource("classpath:setting.properties")
+@Configuration
+public class PropertySourceConfig {
+
+}
+
+// Get values from "setting.properties"

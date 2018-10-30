@@ -1,0 +1,14 @@
+public class StudentDao {
+    @PersistenceContext(unitName="firstPersistence")
+	private EntityManager entityManager;
+    
+    public List<StudentInfoModel> getStudents() {
+        StringBuilder strBuilder = new StringBuilder();
+        
+        strBuilder.append(" SELECT * FROM STUDENT");
+        
+        Query query = entityManager.createNativeQuery(strBuilder.toString(), "StudentInfoModelResult");
+        
+        return (List<StudentInfoModel>) query.getResultList();
+    }
+}

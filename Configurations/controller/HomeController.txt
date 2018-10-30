@@ -1,0 +1,10 @@
+@RestController 
+public class HomeController {
+    @Value("${schoolHomePage}")
+	String schoolHomePage;
+    
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String about() {
+        return schoolHomePage;
+    }
+}

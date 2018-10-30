@@ -1,0 +1,35 @@
+@Repository
+public class SampleDao {
+    @PersistenceContext(unitName="firstPersistence")
+    private EntityManager entityManager;
+    
+    public String getNameById(String id) {
+        StringBuilder strBuilder = new StringBuilder();
+        
+        strBuilder.append(" SELECT d.NAME FROM DATA d");
+        strBuilder.append(" WHERE d.ID = :id");
+        
+        Query query = entityManager.createNativeQuery(strBuilder.toString());
+        query.setParameter("id", id);
+        
+        return query.getSingleResult().toString();
+    } 
+
+    public Boolean updateNameById(String id, String name) {
+        StringBuilder strBuilder = new StringBuilder();
+        
+        strBuilder.append(" UPDATE DATA d ");
+        strBuilder.append(" SET d.NAME = :name");
+        strBuilder.append(" WHERE d.ID = :id");
+        
+        Query query = entityManager.createNativeQuery(strBuilder.toString());
+        query.setParameter("id", id);
+        query.setParameter("name", name);
+        
+        if (query.executeUpdate() > 0) {
+            return true;
+        }
+        
+        return false;
+    }
+}

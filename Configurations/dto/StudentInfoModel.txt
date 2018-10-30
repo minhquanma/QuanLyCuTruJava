@@ -1,0 +1,11 @@
+public class StudentInfoModel {
+    private int id;
+    private String firstName;
+    private String lastName;
+    
+    // Getters & Setters
+    // End 
+    
+    // Constructors
+    // End
+}
