@@ -102,11 +102,8 @@
             <img class="avatar" [src]="congDan.avatar">
           </td>
         </tr>
-        <pagination
-          [totalItems]="congDans.length"
-          [itemsPerPage]="5"
-          (pageChanged)="pageChanged($event)">
-      </pagination>
+        <pagination [totalItems]="congDans?.length" [itemsPerPage]="5" (pageChanged)="pageChanged($event)">
+        </pagination>
       </table>
     </div>
   </div>

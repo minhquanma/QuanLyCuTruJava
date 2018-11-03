@@ -44,7 +44,6 @@ export class CongDanComponent extends AppComponent implements OnInit {
 
   ngOnInit() {
     this.callAPI_GetNguoiDungs();
-    this.init();
   }
 
   public pageChanged(event: PageChangedEvent): void {
@@ -53,13 +52,10 @@ export class CongDanComponent extends AppComponent implements OnInit {
     this.congDansPagination = this.congDans.slice(startItem, endItem);
   }
 
-  private init() {
-    this.congDansPagination = this.congDans.slice(0, 5);
-  }
-
   private callAPI_GetNguoiDungs() {
     this.congDanService.getNguoiDungs(result => {
       this.congDans = result;
+      this.congDansPagination = this.congDans.slice(0, 5);
     });
   }
 }
